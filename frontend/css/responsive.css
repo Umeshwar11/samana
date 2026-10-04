@@ -1,0 +1,98 @@
+/* ===========================
+   Mobile Hero
+=========================== */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: auto;
+        padding: 80px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+        line-height: 1.15;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .search-box {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .search-box input,
+    .search-box button {
+        width: 100%;
+    }
+
+}
+
+/* =====================================================
+   HOST HERO - MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .host-hero {
+        min-height: 520px;
+    }
+
+    .host-hero-overlay {
+        background:
+            linear-gradient(
+                rgba(0, 0, 0, 0.65),
+                rgba(0, 0, 0, 0.65)
+            );
+    }
+
+    .host-hero-content {
+        text-align: center;
+        padding: 30px 15px;
+    }
+
+    .host-hero-content h1 {
+        font-size: 36px;
+    }
+
+    .host-hero-content p {
+        font-size: 16px;
+    }
+
+    .host-hero-badge {
+        font-size: 14px;
+    }
+
+}
+
+/* =====================================================
+   CONTACT HERO - MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .contact-hero {
+        min-height: 400px;
+    }
+
+    .contact-hero-content {
+        padding: 30px 15px;
+    }
+
+    .contact-hero-content h1 {
+        font-size: 36px;
+    }
+
+    .contact-hero-content p {
+        font-size: 16px;
+    }
+
+    .contact-hero-badge {
+        font-size: 14px;
+    }
+
+}

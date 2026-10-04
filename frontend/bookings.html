@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SAMANA | My Bookings</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold fs-3" href="index.html">
+            SAMANA
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav">
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="experience.html">
+                        Experiences
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="bookings.html">
+                        My Bookings
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="d-flex gap-2">
+
+                <button
+                    class="btn btn-success"
+                    onclick="logoutUser()">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     PAGE HEADER
+===================================================== -->
+
+<section class="py-5 bg-light">
+
+    <div class="container text-center">
+
+        <h1 class="display-5 fw-bold">
+            My Bookings
+        </h1>
+
+        <p class="lead text-muted">
+            View and manage your experience bookings.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BOOKINGS
+===================================================== -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div id="bookingMessage"></div>
+
+        <div id="bookingsContainer">
+
+            <div class="text-center">
+
+                <div
+                    class="spinner-border text-success"
+                    role="status">
+                </div>
+
+                <p class="mt-3">
+                    Loading bookings...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAYMENT MODAL
+===================================================== -->
+
+<div
+    class="modal fade"
+    id="paymentModal"
+    tabindex="-1"
+    aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+
+            <!-- MODAL HEADER -->
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                    Make Payment
+
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+
+            <!-- MODAL BODY -->
+
+            <div class="modal-body">
+
+                <div id="paymentMessage"></div>
+
+
+                <div class="mb-3">
+
+                    <strong>
+                        Booking ID:
+                    </strong>
+
+                    <span id="paymentBookingId"></span>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <strong>
+                        Amount:
+                    </strong>
+
+                    ₹<span id="paymentAmount"></span>
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label
+                        for="paymentMethod"
+                        class="form-label fw-bold">
+
+                        Payment Method
+
+                    </label>
+
+
+                    <select
+                        id="paymentMethod"
+                        class="form-select">
+
+                        <option value="UPI">
+                            UPI
+                        </option>
+
+                        <option value="CARD">
+                            Card
+                        </option>
+
+                        <option value="NET_BANKING">
+                            Net Banking
+                        </option>
+
+                        <option value="CASH">
+                            Cash
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- MODAL FOOTER -->
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-success"
+                    id="confirmPaymentButton"
+                    onclick="makePayment()">
+
+                    <i class="fa-solid fa-money-bill"></i>
+
+                    Pay Now
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="bg-dark text-white py-4">
+
+    <div class="container text-center">
+
+        <p class="mb-0">
+
+            © 2026 SAMANA.
+            All rights reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="js/script.js"></script>
+
+
+<script>
+
+let selectedBookingId = null;
+
+
+// =====================================================
+// DISPLAY MY BOOKINGS
+// =====================================================
+
+async function displayMyBookings() {
+
+    const container =
+        document.getElementById("bookingsContainer");
+
+    const message =
+        document.getElementById("bookingMessage");
+
+
+    try {
+
+        const token =
+            localStorage.getItem("token");
+
+
+        if (!token) {
+
+            message.innerHTML = `
+
+                <div class="alert alert-warning">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    Please login first.
+
+                </div>
+
+            `;
+
+            container.innerHTML = "";
+
+            return;
+
+        }
+
+
+        const bookings =
+            await apiRequest("/bookings/my");
+
+
+        console.log(
+            "Bookings received:",
+            bookings
+        );
+
+
+        if (!bookings ||
+            bookings.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="alert alert-info text-center">
+
+                    <i class="fa-solid fa-calendar-xmark"></i>
+
+                    You have no bookings.
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        container.innerHTML = "";
+
+
+        bookings.forEach(function (booking) {
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "card mb-4 shadow-sm";
+
+
+            let actionButtons = "";
+
+
+            // =================================================
+            // CANCELLED BOOKING
+            // =================================================
+
+            if (booking.status === "CANCELLED") {
+
+                actionButtons = `
+
+                    <button
+                        class="btn btn-secondary"
+                        disabled>
+
+                        <i class="fa-solid fa-ban"></i>
+
+                        Booking Cancelled
+
+                    </button>
+
+                `;
+
+            }
+
+
+            // =================================================
+            // ACTIVE BOOKING
+            // =================================================
+
+            else {
+
+                actionButtons = `
+
+                    <button
+                        class="btn btn-success me-2"
+                        onclick="openPaymentModal(
+                            ${booking.id},
+                            ${booking.totalPrice}
+                        )">
+
+                        <i class="fa-solid fa-credit-card"></i>
+
+                        Pay Now
+
+                    </button>
+
+
+                    <button
+                        class="btn btn-danger"
+                        onclick="cancelBooking(
+                            ${booking.id}
+                        )">
+
+                        <i class="fa-solid fa-ban"></i>
+
+                        Cancel Booking
+
+                    </button>
+
+                `;
+
+            }
+
+
+            card.innerHTML = `
+
+                <div class="card-body">
+
+
+                    <h3 class="card-title mb-4">
+
+                        ${booking.experienceTitle ||
+                        "Experience"}
+
+                    </h3>
+
+
+                    <p>
+
+                        <strong>
+                            Booking ID:
+                        </strong>
+
+                        ${booking.id}
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            People:
+                        </strong>
+
+                        ${booking.numberOfPeople}
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Booking Date:
+                        </strong>
+
+                        ${booking.bookingDate}
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Total Price:
+                        </strong>
+
+                        ₹${booking.totalPrice}
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Status:
+                        </strong>
+
+                        <span class="badge
+                        ${getStatusClass(booking.status)}">
+
+                            ${booking.status}
+
+                        </span>
+
+                    </p>
+
+
+                    <div class="mt-3">
+
+                        ${actionButtons}
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+
+            container.appendChild(card);
+
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Failed to display bookings:",
+            error
+        );
+
+
+        container.innerHTML = `
+
+            <div class="alert alert-danger">
+
+                <h5>
+
+                    <i class="fa-solid fa-circle-exclamation"></i>
+
+                    Unable to load bookings
+
+                </h5>
+
+                <p class="mb-0">
+
+                    ${error.message ||
+                    "Please try again."}
+
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+// =====================================================
+// STATUS BADGE
+// =====================================================
+
+function getStatusClass(status) {
+
+    if (status === "CONFIRMED") {
+
+        return "bg-success";
+
+    }
+
+
+    if (status === "CANCELLED") {
+
+        return "bg-secondary";
+
+    }
+
+
+    if (status === "PENDING") {
+
+        return "bg-warning text-dark";
+
+    }
+
+
+    return "bg-info";
+
+}
+
+
+// =====================================================
+// OPEN PAYMENT MODAL
+// =====================================================
+
+async function openPaymentModal(
+    bookingId,
+    amount
+) {
+
+    selectedBookingId =
+        bookingId;
+
+
+    document.getElementById(
+        "paymentBookingId"
+    ).textContent =
+        bookingId;
+
+
+    document.getElementById(
+        "paymentAmount"
+    ).textContent =
+        amount;
+
+
+    document.getElementById(
+        "paymentMessage"
+    ).innerHTML = "";
+
+
+    // =================================================
+    // CHECK WHETHER PAYMENT ALREADY EXISTS
+    // =================================================
+
+    try {
+
+        const existingPayment =
+            await apiRequest(
+                `/payments/booking/${bookingId}`
+            );
+
+
+        if (existingPayment) {
+
+            document.getElementById(
+                "paymentMessage"
+            ).innerHTML = `
+
+                <div class="alert alert-info">
+
+                    <strong>
+                        Payment already exists.
+                    </strong>
+
+                    <br>
+
+                    Transaction ID:
+                    ${existingPayment.transactionId}
+
+                    <br>
+
+                    Status:
+                    ${existingPayment.status}
+
+                </div>
+
+            `;
+
+
+            document.getElementById(
+                "confirmPaymentButton"
+            ).style.display =
+                "none";
+
+
+            const modal =
+                new bootstrap.Modal(
+                    document.getElementById(
+                        "paymentModal"
+                    )
+                );
+
+
+            modal.show();
+
+
+            return;
+
+        }
+
+    } catch (error) {
+
+        // =================================================
+        // 404 / PAYMENT NOT FOUND
+        // =================================================
+        // This is expected when the booking has not
+        // been paid yet.
+        //
+        // Therefore we continue to payment.
+        // =================================================
+
+        console.log(
+            "No existing payment found. Continue payment."
+        );
+
+    }
+
+
+    document.getElementById(
+        "confirmPaymentButton"
+    ).style.display =
+        "inline-block";
+
+
+    const modal =
+        new bootstrap.Modal(
+            document.getElementById(
+                "paymentModal"
+            )
+        );
+
+
+    modal.show();
+
+}
+
+
+// =====================================================
+// MAKE PAYMENT
+// =====================================================
+
+async function makePayment() {
+
+    const paymentMessage =
+        document.getElementById(
+            "paymentMessage"
+        );
+
+
+    const paymentButton =
+        document.getElementById(
+            "confirmPaymentButton"
+        );
+
+
+    const paymentMethod =
+        document.getElementById(
+            "paymentMethod"
+        ).value;
+
+
+    if (!selectedBookingId) {
+
+        paymentMessage.innerHTML = `
+
+            <div class="alert alert-danger">
+
+                Booking ID is missing.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    paymentButton.disabled = true;
+
+
+    paymentButton.innerHTML = `
+
+        <span
+            class="spinner-border spinner-border-sm">
+        </span>
+
+        Processing...
+
+    `;
+
+
+    paymentMessage.innerHTML = "";
+
+
+    try {
+
+        // =================================================
+        // PAYMENT REQUEST
+        // =================================================
+
+        const requestData = {
+
+            bookingId:
+                Number(selectedBookingId),
+
+            paymentMethod:
+                paymentMethod
+
+        };
+
+
+        console.log(
+            "Payment request:",
+            requestData
+        );
+
+
+        const response =
+            await fetch(
+                `${API_BASE_URL}/payments`,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Authorization":
+                            "Bearer " +
+                            localStorage.getItem(
+                                "token"
+                            )
+
+                    },
+
+                    body:
+                        JSON.stringify(
+                            requestData
+                        )
+
+                }
+            );
+
+
+        // =================================================
+        // READ RESPONSE
+        // =================================================
+
+        const responseText =
+            await response.text();
+
+
+        let responseData;
+
+
+        try {
+
+            responseData =
+                JSON.parse(
+                    responseText
+                );
+
+        } catch (jsonError) {
+
+            responseData =
+                responseText;
+
+        }
+
+
+        console.log(
+            "Payment response:",
+            response.status,
+            responseData
+        );
+
+
+        // =================================================
+        // PAYMENT FAILED
+        // =================================================
+
+        if (!response.ok) {
+
+            let errorMessage =
+                "Payment could not be completed.";
+
+
+            if (
+                responseData &&
+                typeof responseData === "object"
+            ) {
+
+                errorMessage =
+                    responseData.message ||
+                    responseData.error ||
+                    responseData.details ||
+                    errorMessage;
+
+            }
+
+            else if (
+                typeof responseData === "string" &&
+                responseData.trim() !== ""
+            ) {
+
+                errorMessage =
+                    responseData;
+
+            }
+
+
+            throw new Error(
+                errorMessage
+            );
+
+        }
+
+
+        // =================================================
+        // PAYMENT SUCCESS
+        // =================================================
+
+        paymentMessage.innerHTML = `
+
+            <div class="alert alert-success">
+
+                <h5>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Payment Successful!
+
+                </h5>
+
+
+                <p class="mb-1">
+
+                    Payment ID:
+                    ${responseData.id}
+
+                </p>
+
+
+                <p class="mb-1">
+
+                    Transaction ID:
+                    ${responseData.transactionId}
+
+                </p>
+
+
+                <p class="mb-0">
+
+                    Status:
+                    ${responseData.status}
+
+                </p>
+
+            </div>
+
+        `;
+
+
+        paymentButton.style.display =
+            "none";
+
+
+        // =================================================
+        // RELOAD BOOKINGS AFTER SHORT DELAY
+        // =================================================
+
+        setTimeout(function () {
+
+            const modalElement =
+                document.getElementById(
+                    "paymentModal"
+                );
+
+
+            const modal =
+                bootstrap.Modal.getInstance(
+                    modalElement
+                );
+
+
+            if (modal) {
+
+                modal.hide();
+
+            }
+
+
+            displayMyBookings();
+
+        }, 2000);
+
+
+    } catch (error) {
+
+        console.error(
+            "Payment error:",
+            error
+        );
+
+
+        paymentMessage.innerHTML = `
+
+            <div class="alert alert-danger">
+
+                <h6>
+
+                    <i class="fa-solid fa-circle-exclamation"></i>
+
+                    Payment Failed
+
+                </h6>
+
+
+                <p class="mb-0">
+
+                    ${error.message ||
+                    "Payment could not be completed."}
+
+                </p>
+
+            </div>
+
+        `;
+
+
+        paymentButton.disabled =
+            false;
+
+
+        paymentButton.innerHTML = `
+
+            <i class="fa-solid fa-money-bill"></i>
+
+            Pay Now
+
+        `;
+
+    }
+
+}
+
+
+// =====================================================
+// CANCEL BOOKING
+// =====================================================
+
+async function cancelBooking(
+    bookingId
+) {
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to cancel this booking?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    try {
+
+        console.log(
+            "Cancelling booking:",
+            bookingId
+        );
+
+
+        const response =
+            await apiRequest(
+                `/bookings/${bookingId}/cancel`,
+                {
+
+                    method: "PUT"
+
+                }
+            );
+
+
+        console.log(
+            "Booking cancelled:",
+            response
+        );
+
+
+        document.getElementById(
+            "bookingMessage"
+        ).innerHTML = `
+
+            <div class="alert alert-success">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Booking cancelled successfully.
+
+            </div>
+
+        `;
+
+
+        displayMyBookings();
+
+
+    } catch (error) {
+
+        console.error(
+            "Cancel booking error:",
+            error
+        );
+
+
+        document.getElementById(
+            "bookingMessage"
+        ).innerHTML = `
+
+            <div class="alert alert-danger">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                ${error.message ||
+                "Unable to cancel booking."}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+// =====================================================
+// LOGOUT
+// =====================================================
+
+function logoutUser() {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userRole");
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+// =====================================================
+// LOAD BOOKINGS
+// =====================================================
+
+displayMyBookings();
+
+</script>
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>

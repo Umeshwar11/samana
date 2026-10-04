@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Host Dashboard | SAMANA</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <!-- =====================================================
+         RESPONSIVE CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+
+    <!-- =====================================================
+         PAGE-SPECIFIC STYLING
+    ====================================================== -->
+
+    <style>
+
+        .upload-box {
+
+            border: 2px dashed #dee2e6;
+
+            border-radius: 16px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background: #fafafa;
+
+            transition: all 0.2s ease;
+
+        }
+
+
+        .upload-box:hover {
+
+            border-color: #212529;
+
+            background: #f8f9fa;
+
+        }
+
+
+        .upload-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #f1f1f1;
+
+            font-size: 24px;
+
+        }
+
+
+        .upload-preview {
+
+            margin-top: 20px;
+
+        }
+
+
+        .upload-preview img {
+
+            max-width: 100%;
+
+            max-height: 300px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+        }
+
+
+        .upload-preview video {
+
+            width: 100%;
+
+            max-height: 350px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .image-preview-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(120px, 1fr));
+
+            gap: 12px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .image-preview-grid img {
+
+            width: 100%;
+
+            height: 120px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+
+        }
+
+
+        .form-section-title {
+
+            border-bottom: 1px solid #eeeeee;
+
+            padding-bottom: 12px;
+
+        }
+
+
+        .required-star {
+
+            color: #dc3545;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+
+    <div class="container">
+
+
+        <!-- LOGO -->
+
+        <a
+            class="navbar-brand fw-bold"
+            href="index.html"
+        >
+            SAMANA
+        </a>
+
+
+        <!-- MOBILE BUTTON -->
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- NAVIGATION -->
+
+        <div
+            class="collapse navbar-collapse"
+            id="mainNavbar"
+        >
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="index.html"
+                    >
+                        Home
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="explore.html"
+                    >
+                        Experiences
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link active"
+                        href="host-dashboard.html"
+                    >
+                        Host Dashboard
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="about.html"
+                    >
+                        About
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="contact.html"
+                    >
+                        Contact
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="my-bookings.html"
+                    >
+                        My Bookings
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item ms-lg-2">
+
+                    <button
+                        type="button"
+                        id="logoutBtn"
+                        class="btn btn-outline-danger btn-sm px-3"
+                    >
+
+                        <i
+                            class="fa-solid fa-right-from-bracket me-1"
+                        ></i>
+
+                        Logout
+
+                    </button>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     PAGE HEADER
+===================================================== -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-8">
+
+                <p class="text-uppercase fw-semibold mb-2">
+                    SAMANA Host
+                </p>
+
+                <h1 class="display-5 fw-bold mb-3">
+                    Host Dashboard
+                </h1>
+
+                <p class="lead text-muted mb-0">
+                    Create and share your unique cultural experience
+                    with travelers through SAMANA.
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+
+                <a
+                    href="host.html"
+                    class="btn btn-outline-dark"
+                >
+
+                    <i
+                        class="fa-solid fa-arrow-left me-2"
+                    ></i>
+
+                    Back to Become a Host
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CREATE EXPERIENCE
+===================================================== -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-9 col-xl-8">
+
+
+                <div class="card border-0 shadow-sm rounded-4">
+
+                    <div class="card-body p-4 p-md-5">
+
+
+                        <!-- =================================================
+                             FORM HEADER
+                        ================================================== -->
+
+                        <div class="d-flex align-items-center mb-4">
+
+                            <div
+                                class="d-flex align-items-center justify-content-center rounded-circle me-3"
+                                style="
+                                    width: 48px;
+                                    height: 48px;
+                                    background: #f2f2f2;
+                                "
+                            >
+
+                                <i
+                                    class="fa-solid fa-plus fs-5"
+                                ></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h2 class="h3 fw-bold mb-1">
+                                    Create New Experience
+                                </h2>
+
+                                <p class="text-muted mb-0">
+                                    Add a complete cultural experience for travelers.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             MESSAGE
+                        ================================================== -->
+
+                        <div
+                            id="formMessage"
+                            class="alert"
+                            style="display: none;"
+                        ></div>
+
+
+
+                        <!-- =================================================
+                             FORM
+                        ================================================== -->
+
+                        <form
+                            id="experienceForm"
+                            enctype="multipart/form-data"
+                        >
+
+
+                            <!-- =================================================
+                                 BASIC INFORMATION
+                            ================================================== -->
+
+                            <div class="form-section-title mb-4">
+
+                                <h3 class="h5 fw-bold mb-1">
+
+                                    <i
+                                        class="fa-solid fa-circle-info me-2"
+                                    ></i>
+
+                                    Basic Information
+
+                                </h3>
+
+                                <p class="text-muted mb-0">
+                                    Tell travelers what your experience is about.
+                                </p>
+
+                            </div>
+
+
+
+                            <!-- TITLE -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="title"
+                                    class="form-label fw-semibold"
+                                >
+
+                                    Experience Title
+
+                                    <span class="required-star">*</span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control form-control-lg"
+                                    id="title"
+                                    name="title"
+                                    placeholder="Example: Traditional Village Cooking Experience"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- DESCRIPTION -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="description"
+                                    class="form-label fw-semibold"
+                                >
+
+                                    Description
+
+                                    <span class="required-star">*</span>
+
+                                </label>
+
+                                <textarea
+                                    class="form-control"
+                                    id="description"
+                                    name="description"
+                                    rows="6"
+                                    placeholder="Describe what travelers will experience..."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+
+                            <!-- PRICE + DURATION -->
+
+                            <div class="row g-4">
+
+
+                                <!-- PRICE -->
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        for="price"
+                                        class="form-label fw-semibold"
+                                    >
+
+                                        Price
+
+                                        <span class="required-star">*</span>
+
+                                    </label>
+
+                                    <div class="input-group input-group-lg">
+
+                                        <span class="input-group-text">
+                                            ₹
+                                        </span>
+
+                                        <input
+                                            type="number"
+                                            class="form-control"
+                                            id="price"
+                                            name="price"
+                                            placeholder="1500"
+                                            min="1"
+                                            step="0.01"
+                                            required
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- DURATION -->
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        for="duration"
+                                        class="form-label fw-semibold"
+                                    >
+
+                                        Duration
+
+                                        <span class="required-star">*</span>
+
+                                    </label>
+
+                                    <div class="input-group input-group-lg">
+
+                                        <input
+                                            type="number"
+                                            class="form-control"
+                                            id="duration"
+                                            name="duration"
+                                            placeholder="1"
+                                            min="1"
+                                            step="1"
+                                            required
+                                        >
+
+                                        <span class="input-group-text">
+                                            Days
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- CATEGORY -->
+
+                            <div class="mb-4 mt-4">
+
+                                <label
+                                    for="categoryId"
+                                    class="form-label fw-semibold"
+                                >
+
+                                    Category
+
+                                    <span class="required-star">*</span>
+
+                                </label>
+
+                                <select
+                                    class="form-select form-select-lg"
+                                    id="categoryId"
+                                    name="categoryId"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Loading categories...
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 LOCATION
+                            ================================================== -->
+
+                            <hr class="my-5">
+
+
+                            <div class="form-section-title mb-4">
+
+                                <h3 class="h5 fw-bold mb-1">
+
+                                    <i
+                                        class="fa-solid fa-location-dot me-2"
+                                    ></i>
+
+                                    Location & Capacity
+
+                                </h3>
+
+                                <p class="text-muted mb-0">
+                                    Tell travelers where the experience happens.
+                                </p>
+
+                            </div>
+
+
+
+                            <div class="row g-4">
+
+
+                                <!-- LOCATION -->
+
+                                <div class="col-md-7">
+
+                                    <label
+                                        for="location"
+                                        class="form-label fw-semibold"
+                                    >
+
+                                        Location
+
+                                        <span class="required-star">*</span>
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control form-control-lg"
+                                        id="location"
+                                        name="location"
+                                        placeholder="Example: Jaipur, Rajasthan"
+                                        required
+                                    >
+
+                                </div>
+
+
+
+                                <!-- MAX GUESTS -->
+
+                                <div class="col-md-5">
+
+                                    <label
+                                        for="maxGuests"
+                                        class="form-label fw-semibold"
+                                    >
+
+                                        Maximum Guests
+
+                                        <span class="required-star">*</span>
+
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        class="form-control form-control-lg"
+                                        id="maxGuests"
+                                        name="maxGuests"
+                                        placeholder="6"
+                                        min="1"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- MEETING POINT -->
+
+                            <div class="mb-4 mt-4">
+
+                                <label
+                                    for="meetingPoint"
+                                    class="form-label fw-semibold"
+                                >
+
+                                    Meeting Point
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="form-control form-control-lg"
+                                    id="meetingPoint"
+                                    name="meetingPoint"
+                                    placeholder="Example: Main village entrance"
+                                >
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 EXPERIENCE DETAILS
+                            ================================================== -->
+
+                            <hr class="my-5">
+
+
+                            <div class="form-section-title mb-4">
+
+                                <h3 class="h5 fw-bold mb-1">
+
+                                    <i
+                                        class="fa-solid fa-list-check me-2"
+                                    ></i>
+
+                                    Experience Details
+
+                                </h3>
+
+                                <p class="text-muted mb-0">
+                                    Explain exactly what travelers will do.
+                                </p>
+
+                            </div>
+
+
+
+                            <!-- WHAT YOU WILL DO -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="whatYouWillDo"
+                                    class="form-label fw-semibold"
+                                >
+                                    What You'll Do
+                                </label>
+
+                                <textarea
+                                    class="form-control"
+                                    id="whatYouWillDo"
+                                    name="whatYouWillDo"
+                                    rows="6"
+                                    placeholder="Example:
+1. Meet your local host
+2. Visit the village market
+3. Learn traditional cooking
+4. Prepare a local meal
+5. Enjoy lunch together"
+                                ></textarea>
+
+                            </div>
+
+
+
+                            <!-- INCLUDED -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="included"
+                                    class="form-label fw-semibold"
+                                >
+                                    What's Included
+                                </label>
+
+                                <textarea
+                                    class="form-control"
+                                    id="included"
+                                    name="included"
+                                    rows="4"
+                                    placeholder="Example:
+Local guide
+Ingredients
+Cooking equipment
+Lunch"
+                                ></textarea>
+
+                            </div>
+
+
+
+                            <!-- NOT INCLUDED -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="notIncluded"
+                                    class="form-label fw-semibold"
+                                >
+                                    What's Not Included
+                                </label>
+
+                                <textarea
+                                    class="form-control"
+                                    id="notIncluded"
+                                    name="notIncluded"
+                                    rows="4"
+                                    placeholder="Example:
+Transportation
+Personal expenses"
+                                ></textarea>
+
+                            </div>
+
+
+
+                            <!-- CANCELLATION POLICY -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="cancellationPolicy"
+                                    class="form-label fw-semibold"
+                                >
+                                    Cancellation Policy
+                                </label>
+
+                                <textarea
+                                    class="form-control"
+                                    id="cancellationPolicy"
+                                    name="cancellationPolicy"
+                                    rows="4"
+                                    placeholder="Example: Free cancellation up to 24 hours before the experience."
+                                ></textarea>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 MEDIA UPLOAD
+                            ================================================== -->
+
+                            <hr class="my-5">
+
+
+                            <div class="form-section-title mb-4">
+
+                                <h3 class="h5 fw-bold mb-1">
+
+                                    <i
+                                        class="fa-solid fa-photo-film me-2"
+                                    ></i>
+
+                                    Photos & Video
+
+                                </h3>
+
+                                <p class="text-muted mb-0">
+                                    Upload real photos and a video directly from your computer.
+                                </p>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 COVER IMAGE
+                            ================================================== -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="coverImage"
+                                    class="form-label fw-semibold"
+                                >
+
+                                    Cover Image
+
+                                    <span class="required-star">*</span>
+
+                                </label>
+
+
+                                <div class="upload-box">
+
+
+                                    <div class="upload-icon">
+
+                                        <i
+                                            class="fa-solid fa-image"
+                                        ></i>
+
+                                    </div>
+
+
+                                    <h5 class="fw-bold">
+                                        Upload Cover Image
+                                    </h5>
+
+
+                                    <p class="text-muted mb-3">
+                                        Choose the main image travelers will see.
+                                    </p>
+
+
+                                    <input
+                                        type="file"
+                                        class="form-control"
+                                        id="coverImage"
+                                        name="coverImage"
+                                        accept="image/*"
+                                        required
+                                    >
+
+
+                                    <div class="form-text mt-2">
+                                        JPG, JPEG, PNG or WEBP recommended.
+                                    </div>
+
+
+                                    <div
+                                        id="coverPreview"
+                                        class="upload-preview"
+                                    ></div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 ADDITIONAL IMAGES
+                            ================================================== -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="images"
+                                    class="form-label fw-semibold"
+                                >
+
+                                    Additional Photos
+
+                                </label>
+
+
+                                <div class="upload-box">
+
+
+                                    <div class="upload-icon">
+
+                                        <i
+                                            class="fa-solid fa-images"
+                                        ></i>
+
+                                    </div>
+
+
+                                    <h5 class="fw-bold">
+                                        Upload More Photos
+                                    </h5>
+
+
+                                    <p class="text-muted mb-3">
+                                        You can select multiple photos.
+                                    </p>
+
+
+                                    <input
+                                        type="file"
+                                        class="form-control"
+                                        id="images"
+                                        name="images"
+                                        accept="image/*"
+                                        multiple
+                                    >
+
+
+                                    <div class="form-text mt-2">
+                                        Select multiple images at once.
+                                    </div>
+
+
+                                    <div
+                                        id="imagesPreview"
+                                        class="image-preview-grid"
+                                    ></div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 VIDEO UPLOAD
+                            ================================================== -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="video"
+                                    class="form-label fw-semibold"
+                                >
+
+                                    Experience Video
+
+                                </label>
+
+
+                                <div class="upload-box">
+
+
+                                    <div class="upload-icon">
+
+                                        <i
+                                            class="fa-solid fa-video"
+                                        ></i>
+
+                                    </div>
+
+
+                                    <h5 class="fw-bold">
+                                        Upload Experience Video
+                                    </h5>
+
+
+                                    <p class="text-muted mb-3">
+                                        Upload a short video showing your experience.
+                                    </p>
+
+
+                                    <input
+                                        type="file"
+                                        class="form-control"
+                                        id="video"
+                                        name="video"
+                                        accept="video/*"
+                                    >
+
+
+                                    <div class="form-text mt-2">
+                                        MP4 is recommended.
+                                    </div>
+
+
+                                    <div
+                                        id="videoPreview"
+                                        class="upload-preview"
+                                    ></div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 INFORMATION BOX
+                            ================================================== -->
+
+                            <div
+                                class="alert alert-light border rounded-3 mb-4"
+                            >
+
+                                <div class="d-flex">
+
+                                    <i
+                                        class="fa-solid fa-circle-info me-3 mt-1"
+                                    ></i>
+
+                                    <div>
+
+                                        <strong>
+                                            Before creating your experience
+                                        </strong>
+
+                                        <p class="mb-0 mt-1 text-muted">
+                                            Make sure your title, description,
+                                            price, location, capacity, photos,
+                                            video, and other details are accurate.
+                                            Travelers will see this information
+                                            when browsing your experience.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 BUTTONS
+                            ================================================== -->
+
+                            <div
+                                class="d-flex flex-column flex-sm-row gap-3"
+                            >
+
+
+                                <button
+                                    type="submit"
+                                    id="createExperienceBtn"
+                                    class="btn btn-primary btn-lg px-4"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-plus me-2"
+                                    ></i>
+
+                                    Create Experience
+
+                                </button>
+
+
+                                <button
+                                    type="reset"
+                                    id="clearButton"
+                                    class="btn btn-outline-secondary btn-lg px-4"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-rotate-left me-2"
+                                    ></i>
+
+                                    Clear Form
+
+                                </button>
+
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOST FEATURES
+===================================================== -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <p class="text-uppercase fw-semibold mb-2">
+                Your Host Journey
+            </p>
+
+            <h2 class="fw-bold">
+                Share Your Culture With Travelers
+            </h2>
+
+            <p class="text-muted">
+                Create meaningful experiences and introduce
+                travelers to your local culture.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- CARD 1 -->
+
+            <div class="col-md-4">
+
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                    <div class="card-body p-4 text-center">
+
+                        <div
+                            class="d-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle"
+                            style="
+                                width: 60px;
+                                height: 60px;
+                                background: #f2f2f2;
+                            "
+                        >
+
+                            <i
+                                class="fa-solid fa-people-group fs-4"
+                            ></i>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Meet Travelers
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Welcome visitors and share your
+                            local traditions and stories.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 2 -->
+
+            <div class="col-md-4">
+
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                    <div class="card-body p-4 text-center">
+
+                        <div
+                            class="d-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle"
+                            style="
+                                width: 60px;
+                                height: 60px;
+                                background: #f2f2f2;
+                            "
+                        >
+
+                            <i
+                                class="fa-solid fa-earth-asia fs-4"
+                            ></i>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Share Your Culture
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Showcase authentic food, crafts,
+                            traditions, farms, and local life.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 3 -->
+
+            <div class="col-md-4">
+
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+
+                    <div class="card-body p-4 text-center">
+
+                        <div
+                            class="d-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle"
+                            style="
+                                width: 60px;
+                                height: 60px;
+                                background: #f2f2f2;
+                            "
+                        >
+
+                            <i
+                                class="fa-solid fa-hand-holding-dollar fs-4"
+                            ></i>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Earn From Your Experience
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Offer meaningful experiences and
+                            earn through your hosting activities.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="bg-dark text-white py-5">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-5">
+
+                <h3 class="fw-bold">
+                    SAMANA
+                </h3>
+
+                <p class="text-white-50 mt-3 mb-0">
+                    Discover authentic cultural experiences,
+                    connect with local hosts, and experience
+                    the heart of every destination.
+                </p>
+
+            </div>
+
+
+            <div class="col-sm-6 col-lg-3">
+
+                <h5 class="fw-semibold">
+                    Quick Links
+                </h5>
+
+                <ul class="list-unstyled mt-3">
+
+                    <li class="mb-2">
+
+                        <a
+                            href="index.html"
+                            class="text-white-50 text-decoration-none"
+                        >
+                            Home
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="explore.html"
+                            class="text-white-50 text-decoration-none"
+                        >
+                            Experiences
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="host.html"
+                            class="text-white-50 text-decoration-none"
+                        >
+                            Become a Host
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="about.html"
+                            class="text-white-50 text-decoration-none"
+                        >
+                            About
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a
+                            href="contact.html"
+                            class="text-white-50 text-decoration-none"
+                        >
+                            Contact
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-sm-6 col-lg-4">
+
+                <h5 class="fw-semibold">
+                    Host With SAMANA
+                </h5>
+
+                <p class="text-white-50 mt-3">
+                    Have a unique cultural experience to share?
+                    Become a SAMANA host and welcome travelers
+                    into your world.
+                </p>
+
+                <a
+                    href="host.html"
+                    class="btn btn-outline-light"
+                >
+                    Learn More
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <hr class="border-secondary my-4">
+
+
+        <div class="text-center">
+
+            <p class="text-white-50 mb-0">
+                © 2026 SAMANA. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BOOTSTRAP JS
+===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+
+<!-- =====================================================
+     IMAGE / VIDEO PREVIEW
+===================================================== -->
+
+<script>
+
+    // ==========================================
+    // COVER IMAGE PREVIEW
+    // ==========================================
+
+    const coverImageInput =
+        document.getElementById("coverImage");
+
+    const coverPreview =
+        document.getElementById("coverPreview");
+
+
+    if (coverImageInput) {
+
+        coverImageInput.addEventListener(
+            "change",
+            function () {
+
+                coverPreview.innerHTML = "";
+
+                const file = this.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+                if (!file.type.startsWith("image/")) {
+
+                    coverPreview.innerHTML =
+                        '<div class="text-danger mt-2">Please select an image file.</div>';
+
+                    this.value = "";
+
+                    return;
+                }
+
+                const image =
+                    document.createElement("img");
+
+                image.src =
+                    URL.createObjectURL(file);
+
+                image.alt =
+                    "Cover image preview";
+
+                coverPreview.appendChild(image);
+
+            }
+        );
+
+    }
+
+
+
+    // ==========================================
+    // ADDITIONAL IMAGES PREVIEW
+    // ==========================================
+
+    const imagesInput =
+        document.getElementById("images");
+
+    const imagesPreview =
+        document.getElementById("imagesPreview");
+
+
+    if (imagesInput) {
+
+        imagesInput.addEventListener(
+            "change",
+            function () {
+
+                imagesPreview.innerHTML = "";
+
+                const files =
+                    Array.from(this.files);
+
+                files.forEach(file => {
+
+                    if (!file.type.startsWith("image/")) {
+                        return;
+                    }
+
+                    const image =
+                        document.createElement("img");
+
+                    image.src =
+                        URL.createObjectURL(file);
+
+                    image.alt =
+                        "Experience image";
+
+                    imagesPreview.appendChild(image);
+
+                });
+
+            }
+        );
+
+    }
+
+
+
+    // ==========================================
+    // VIDEO PREVIEW
+    // ==========================================
+
+    const videoInput =
+        document.getElementById("video");
+
+    const videoPreview =
+        document.getElementById("videoPreview");
+
+
+    if (videoInput) {
+
+        videoInput.addEventListener(
+            "change",
+            function () {
+
+                videoPreview.innerHTML = "";
+
+                const file = this.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+                if (!file.type.startsWith("video/")) {
+
+                    videoPreview.innerHTML =
+                        '<div class="text-danger mt-2">Please select a video file.</div>';
+
+                    this.value = "";
+
+                    return;
+                }
+
+                const video =
+                    document.createElement("video");
+
+                video.src =
+                    URL.createObjectURL(file);
+
+                video.controls = true;
+
+                videoPreview.appendChild(video);
+
+            }
+        );
+
+    }
+
+</script>
+
+
+
+<!-- =====================================================
+     HOST DASHBOARD JS
+===================================================== -->
+
+<script
+    src="js/host-dashboard.js"
+></script>
+
+
+</body>
+
+</html>

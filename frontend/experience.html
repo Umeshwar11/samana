@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SAMANA | Experience Details</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+    <!-- Main CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+
+    <!-- Responsive CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css">
+
+
+    <style>
+
+        .experience-hero-image {
+
+            width: 100%;
+
+            height: 450px;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+
+            display: block;
+
+        }
+
+
+        .experience-video {
+
+            width: 100%;
+
+            min-height: 400px;
+
+            border: 0;
+
+            border-radius: 20px;
+
+        }
+
+
+        .detail-card {
+
+            border: 0;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 4px 20px rgba(0,0,0,0.08);
+
+        }
+
+
+        .detail-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #f1f7f3;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .booking-card {
+
+            position: sticky;
+
+            top: 100px;
+
+        }
+
+
+        .experience-price {
+
+            font-size: 2rem;
+
+            font-weight: 700;
+
+        }
+
+
+        .experience-title {
+
+            font-weight: 700;
+
+        }
+
+
+        .media-placeholder {
+
+            width: 100%;
+
+            height: 450px;
+
+            border-radius: 20px;
+
+            background: #f1f3f5;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #6c757d;
+
+            font-size: 1.2rem;
+
+        }
+
+
+        .detail-text {
+
+            white-space: pre-line;
+
+        }
+
+
+        .additional-experience-image {
+
+            width: 100%;
+
+            height: 250px;
+
+            object-fit: cover;
+
+            border-radius: 16px;
+
+            display: block;
+
+        }
+
+
+        @media (max-width: 991px) {
+
+            .booking-card {
+
+                position: static;
+
+            }
+
+
+            .experience-hero-image {
+
+                height: 320px;
+
+            }
+
+
+            .media-placeholder {
+
+                height: 320px;
+
+            }
+
+        }
+
+
+        @media (max-width: 576px) {
+
+            .experience-hero-image {
+
+                height: 250px;
+
+            }
+
+
+            .media-placeholder {
+
+                height: 250px;
+
+            }
+
+
+            .experience-video {
+
+                min-height: 250px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav
+    class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+
+    <div class="container">
+
+
+        <a
+            class="navbar-brand fw-bold fs-3"
+            href="index.html">
+
+            SAMANA
+
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span
+                class="navbar-toggler-icon">
+            </span>
+
+        </button>
+
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav">
+
+
+            <ul
+                class="navbar-nav mx-auto">
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="index.html">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link active"
+                        href="explore.html">
+
+                        Experiences
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="my-bookings.html">
+
+                        My Bookings
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+
+            <div class="d-flex gap-2">
+
+                <button
+                    class="btn btn-success"
+                    onclick="logoutUser()">
+
+                    <i
+                        class="fa-solid fa-right-from-bracket me-1">
+                    </i>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     PAGE
+===================================================== -->
+
+<section class="py-5">
+
+    <div class="container">
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="experienceMessage"
+            class="mb-4">
+        </div>
+
+
+        <!-- LOADING -->
+
+        <div
+            id="experienceLoading"
+            class="text-center py-5">
+
+            <div
+                class="spinner-border text-success"
+                role="status">
+            </div>
+
+
+            <p class="mt-3 text-muted">
+
+                Loading experience...
+
+            </p>
+
+        </div>
+
+
+        <!-- EXPERIENCE CONTENT -->
+
+        <div
+            id="experienceContent"
+            style="display:none;">
+
+
+            <!-- =========================================
+                 TOP SECTION
+            ========================================== -->
+
+            <div class="row g-5">
+
+
+                <!-- LEFT -->
+
+                <div class="col-lg-8">
+
+
+                    <!-- COVER IMAGE -->
+
+                    <div
+                        id="imageContainer"
+                        class="mb-4">
+
+                        <div
+                            class="media-placeholder">
+
+                            <i
+                                class="fa-solid fa-image me-2">
+                            </i>
+
+                            No image available
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TITLE -->
+
+                    <div class="mb-4">
+
+
+                        <span
+                            id="experienceCategory"
+                            class="badge bg-success mb-3">
+
+                            Experience
+
+                        </span>
+
+
+                        <h1
+                            id="experienceTitle"
+                            class="display-5 experience-title mb-3">
+
+                            Experience
+
+                        </h1>
+
+
+                        <p
+                            id="experienceDescription"
+                            class="lead text-muted detail-text">
+
+                        </p>
+
+
+                    </div>
+
+
+
+                    <!-- ADDITIONAL IMAGES -->
+
+                    <div
+                        id="additionalImagesContainer"
+                        class="row g-4 mb-4">
+                    </div>
+
+
+
+                    <!-- BASIC INFORMATION -->
+
+                    <div
+                        class="card detail-card mb-4">
+
+
+                        <div
+                            class="card-body p-4">
+
+
+                            <h3 class="fw-bold mb-4">
+
+                                Experience Information
+
+                            </h3>
+
+
+                            <div class="row g-4">
+
+
+                                <!-- LOCATION -->
+
+                                <div class="col-md-6">
+
+                                    <div class="d-flex">
+
+
+                                        <div
+                                            class="detail-icon me-3">
+
+                                            <i
+                                                class="fa-solid fa-location-dot text-success">
+                                            </i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <small class="text-muted">
+
+                                                Location
+
+                                            </small>
+
+
+                                            <div
+                                                id="experienceLocation"
+                                                class="fw-semibold">
+
+                                                Not specified
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- DURATION -->
+
+                                <div class="col-md-6">
+
+                                    <div class="d-flex">
+
+
+                                        <div
+                                            class="detail-icon me-3">
+
+                                            <i
+                                                class="fa-solid fa-clock text-success">
+                                            </i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <small class="text-muted">
+
+                                                Duration
+
+                                            </small>
+
+
+                                            <div
+                                                id="experienceDuration"
+                                                class="fw-semibold">
+
+                                                Not specified
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- MAX GUESTS -->
+
+                                <div class="col-md-6">
+
+                                    <div class="d-flex">
+
+
+                                        <div
+                                            class="detail-icon me-3">
+
+                                            <i
+                                                class="fa-solid fa-users text-success">
+                                            </i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <small class="text-muted">
+
+                                                Maximum Guests
+
+                                            </small>
+
+
+                                            <div
+                                                id="experienceGuests"
+                                                class="fw-semibold">
+
+                                                Not specified
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- MEETING POINT -->
+
+                                <div class="col-md-6">
+
+                                    <div class="d-flex">
+
+
+                                        <div
+                                            class="detail-icon me-3">
+
+                                            <i
+                                                class="fa-solid fa-map-pin text-success">
+                                            </i>
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <small class="text-muted">
+
+                                                Meeting Point
+
+                                            </small>
+
+
+                                            <div
+                                                id="experienceMeetingPoint"
+                                                class="fw-semibold">
+
+                                                Not specified
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- WHAT YOU WILL DO -->
+
+                    <div
+                        class="card detail-card mb-4">
+
+
+                        <div
+                            class="card-body p-4">
+
+
+                            <h3 class="fw-bold mb-3">
+
+                                <i
+                                    class="fa-solid fa-route text-success me-2">
+                                </i>
+
+                                What You'll Do
+
+                            </h3>
+
+
+                            <p
+                                id="whatYouWillDo"
+                                class="text-muted detail-text mb-0">
+
+                                Not specified
+
+                            </p>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- INCLUDED / NOT INCLUDED -->
+
+                    <div class="row g-4 mb-4">
+
+
+                        <!-- INCLUDED -->
+
+                        <div class="col-md-6">
+
+
+                            <div
+                                class="card detail-card h-100">
+
+
+                                <div
+                                    class="card-body p-4">
+
+
+                                    <h4 class="fw-bold mb-3">
+
+                                        <i
+                                            class="fa-solid fa-circle-check text-success me-2">
+                                        </i>
+
+                                        What's Included
+
+                                    </h4>
+
+
+                                    <p
+                                        id="included"
+                                        class="text-muted detail-text mb-0">
+
+                                        Not specified
+
+                                    </p>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- NOT INCLUDED -->
+
+                        <div class="col-md-6">
+
+
+                            <div
+                                class="card detail-card h-100">
+
+
+                                <div
+                                    class="card-body p-4">
+
+
+                                    <h4 class="fw-bold mb-3">
+
+                                        <i
+                                            class="fa-solid fa-circle-xmark text-danger me-2">
+                                        </i>
+
+                                        What's Not Included
+
+                                    </h4>
+
+
+                                    <p
+                                        id="notIncluded"
+                                        class="text-muted detail-text mb-0">
+
+                                        Not specified
+
+                                    </p>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- CANCELLATION -->
+
+                    <div
+                        class="card detail-card mb-4">
+
+
+                        <div
+                            class="card-body p-4">
+
+
+                            <h3 class="fw-bold mb-3">
+
+                                <i
+                                    class="fa-solid fa-rotate-left text-success me-2">
+                                </i>
+
+                                Cancellation Policy
+
+                            </h3>
+
+
+                            <p
+                                id="cancellationPolicy"
+                                class="text-muted detail-text mb-0">
+
+                                Not specified
+
+                            </p>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- VIDEO -->
+
+                    <div
+                        id="videoSection"
+                        class="card detail-card mb-4"
+                        style="display:none;">
+
+
+                        <div
+                            class="card-body p-4">
+
+
+                            <h3 class="fw-bold mb-4">
+
+                                <i
+                                    class="fa-solid fa-video text-success me-2">
+                                </i>
+
+                                Experience Video
+
+                            </h3>
+
+
+                            <div
+                                id="videoContainer">
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =====================================================
+     ABOUT THE HOST
+===================================================== -->
+
+<div
+    id="hostSection"
+    class="card detail-card mb-4"
+    style="display:none;">
+
+    <div class="card-body p-4">
+
+        <h3 class="fw-bold mb-4">
+
+            <i
+                class="fa-solid fa-user-check text-success me-2">
+            </i>
+
+            About the Host
+
+        </h3>
+
+
+        <div class="d-flex align-items-center mb-4">
+
+
+            <!-- HOST PHOTO -->
+
+            <div class="me-3">
+
+                <div
+                    id="hostProfilePlaceholder"
+                    class="host-profile-placeholder">
+
+                    <i
+                        class="fa-solid fa-user text-success">
+                    </i>
+
+                </div>
+
+
+                <img
+                    id="hostProfileImage"
+                    src=""
+                    alt="Host profile photo"
+                    class="host-profile-image"
+                    style="display:none;">
+
+            </div>
+
+
+
+            <!-- HOST BASIC INFORMATION -->
+
+            <div>
+
+                <h4
+                    id="hostName"
+                    class="fw-bold mb-1">
+
+                    SAMANA Host
+
+                </h4>
+
+
+                <p
+                    id="hostLocation"
+                    class="text-muted mb-2">
+
+                    Location not specified
+
+                </p>
+
+
+                <div class="d-flex flex-wrap gap-2">
+
+
+                    <span
+                        class="badge bg-warning text-dark">
+
+                        <i
+                            class="fa-solid fa-star me-1">
+                        </i>
+
+                        <span id="hostRating">
+                            New
+                        </span>
+
+                    </span>
+
+
+                    <span
+                        class="badge bg-light text-dark border">
+
+                        <span id="hostReviewCount">
+                            0 reviews
+                        </span>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ABOUT -->
+
+        <div class="mb-4">
+
+            <h5 class="fw-bold mb-2">
+
+                About
+
+            </h5>
+
+
+            <p
+                id="hostAbout"
+                class="text-muted detail-text mb-0">
+
+                This host enjoys welcoming travelers
+                and sharing local experiences.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- HOST STATS -->
+
+        <div class="row g-3 mb-4">
+
+
+            <!-- EXPERIENCES -->
+
+            <div class="col-md-4">
+
+                <div
+                    class="host-stat-box text-center">
+
+                    <div
+                        class="host-stat-icon mx-auto mb-2">
+
+                        <i
+                            class="fa-solid fa-map-location-dot text-success">
+                        </i>
+
+                    </div>
+
+
+                    <div
+                        id="hostExperiencesHosted"
+                        class="fw-bold fs-5">
+
+                        0
+
+                    </div>
+
+
+                    <small class="text-muted">
+
+                        Experiences Hosted
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- YEARS -->
+
+            <div class="col-md-4">
+
+                <div
+                    class="host-stat-box text-center">
+
+                    <div
+                        class="host-stat-icon mx-auto mb-2">
+
+                        <i
+                            class="fa-solid fa-calendar-check text-success">
+                        </i>
+
+                    </div>
+
+
+                    <div
+                        id="hostYearsHosting"
+                        class="fw-bold fs-5">
+
+                        Host
+
+                    </div>
+
+
+                    <small class="text-muted">
+
+                        Hosting Experience
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- REVIEWS -->
+
+            <div class="col-md-4">
+
+                <div
+                    class="host-stat-box text-center">
+
+                    <div
+                        class="host-stat-icon mx-auto mb-2">
+
+                        <i
+                            class="fa-solid fa-comments text-success">
+                        </i>
+
+                    </div>
+
+
+                    <div
+                        id="hostReviewCount"
+                        class="fw-bold fs-5">
+
+                        0 reviews
+
+                    </div>
+
+
+                    <small class="text-muted">
+
+                        Guest Reviews
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- FULL PROFILE BUTTON -->
+
+        <a
+            id="viewHostProfileButton"
+            href="#"
+            class="btn btn-outline-success w-100">
+
+            <i
+                class="fa-solid fa-user me-2">
+            </i>
+
+            View Full Profile
+
+            <i
+                class="fa-solid fa-arrow-right ms-2">
+            </i>
+
+        </a>
+
+
+    </div>
+
+</div>
+              
+
+
+                <!-- RIGHT -->
+
+                <div class="col-lg-4">
+
+
+                    <div
+                        class="card detail-card booking-card">
+
+
+                        <div
+                            class="card-body p-4">
+
+
+                            <p class="text-muted mb-1">
+
+                                Starting from
+
+                            </p>
+
+
+                            <div
+                                id="experiencePrice"
+                                class="experience-price mb-4">
+
+                                ₹0
+
+                            </div>
+
+
+
+                            <div
+                                id="availabilityBadge"
+                                class="alert alert-success">
+
+
+                                <i
+                                    class="fa-solid fa-circle-check me-2">
+                                </i>
+
+                                Available
+
+
+                            </div>
+
+
+
+                            <button
+                                type="button"
+                                id="bookExperienceButton"
+                                class="btn btn-success btn-lg w-100">
+
+                                <i
+                                    class="fa-solid fa-calendar-check me-2">
+                                </i>
+
+                                Book Now
+
+                            </button>
+
+
+
+                            <hr class="my-4">
+
+
+
+                            <div
+                                class="small text-muted">
+
+
+                                <p class="mb-2">
+
+                                    <i
+                                        class="fa-solid fa-shield-halved me-2">
+                                    </i>
+
+                                    Secure booking
+
+                                </p>
+
+
+                                <p class="mb-2">
+
+                                    <i
+                                        class="fa-solid fa-user-check me-2">
+                                    </i>
+
+                                    Trusted local experience
+
+                                </p>
+
+
+                                <p class="mb-0">
+
+                                    <i
+                                        class="fa-solid fa-heart me-2">
+                                    </i>
+
+                                    Authentic cultural experience
+
+                                </p>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOOKING MODAL
+===================================================== -->
+
+<div
+    class="modal fade"
+    id="bookingModal"
+    tabindex="-1"
+    aria-hidden="true">
+
+
+    <div class="modal-dialog">
+
+
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+
+                <h5 class="modal-title">
+
+                    <i
+                        class="fa-solid fa-calendar-check me-2">
+                    </i>
+
+                    Book Experience
+
+                </h5>
+
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+
+            </div>
+
+
+
+            <div class="modal-body">
+
+
+                <div
+                    id="bookingFormMessage">
+                </div>
+
+
+
+                <div class="mb-3">
+
+
+                    <label
+                        class="form-label fw-bold">
+
+                        Experience
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="selectedExperienceTitle"
+                        class="form-control"
+                        readonly>
+
+
+                </div>
+
+
+
+                <input
+                    type="hidden"
+                    id="selectedExperienceId">
+
+
+
+                <div class="mb-3">
+
+
+                    <label
+                        for="numberOfPeople"
+                        class="form-label fw-bold">
+
+                        Number of People
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        id="numberOfPeople"
+                        class="form-control"
+                        min="1"
+                        value="1"
+                        required>
+
+
+                </div>
+
+
+
+                <div class="mb-3">
+
+
+                    <label
+                        for="bookingDate"
+                        class="form-label fw-bold">
+
+                        Booking Date & Time
+
+                    </label>
+
+
+                    <input
+                        type="datetime-local"
+                        id="bookingDate"
+                        class="form-control"
+                        required>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="modal-footer">
+
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-success"
+                    id="confirmBookingButton">
+
+                    <i
+                        class="fa-solid fa-calendar-check me-2">
+                    </i>
+
+                    Book Now
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer
+    class="bg-dark text-white py-4">
+
+
+    <div
+        class="container text-center">
+
+
+        <p class="mb-0">
+
+            © 2026 SAMANA.
+            All rights reserved.
+
+        </p>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- COMMON JAVASCRIPT -->
+
+<script
+    src="js/script.js">
+</script>
+
+
+
+<!-- BOOTSTRAP -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+<!-- EXPERIENCE JAVASCRIPT -->
+
+<script
+    src="js/experience.js">
+</script>
+
+
+</body>
+
+</html>

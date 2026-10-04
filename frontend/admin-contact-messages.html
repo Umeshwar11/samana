@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAMANA | Contact Messages</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="index.html">SAMANA</a>
+
+        <div class="ms-auto">
+            <a href="admin.html" class="btn btn-outline-dark">
+                <i class="fa-solid fa-arrow-left"></i> Admin Dashboard
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="py-5" style="background: var(--light-bg); min-height: 100vh;">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="fw-bold mb-1">Contact Messages</h1>
+                <p class="text-muted mb-0">Customer enquiries submitted through SAMANA.</p>
+            </div>
+
+            <button class="btn btn-success" onclick="loadMessages()">
+                <i class="fa-solid fa-rotate"></i> Refresh
+            </button>
+        </div>
+
+        <div id="messageAlert"></div>
+
+        <div class="card p-3">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-success">
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Contact</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="messagesTableBody">
+                        <tr>
+                            <td colspan="6" class="text-center py-4">
+                                Loading messages...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const API_BASE_URL = "http://localhost:8080/api";
+
+    function escapeHtml(value) {
+        const temporary = document.createElement("div");
+        temporary.textContent = value || "";
+        return temporary.innerHTML;
+    }
+
+    async function loadMessages() {
+        const tableBody = document.getElementById("messagesTableBody");
+        const messageAlert = document.getElementById("messageAlert");
+        const token = localStorage.getItem("token");
+
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="6" class="text-center py-4">
+                    Loading messages...
+                </td>
+            </tr>
+        `;
+
+        if (!token) {
+            messageAlert.innerHTML = `
+                <div class="alert alert-danger">
+                    Please log in as an administrator first.
+                </div>
+            `;
+            return;
+        }
+
+        try {
+            const response = await fetch(
+                `${API_BASE_URL}/admin/contact-messages`,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("You do not have permission to view contact messages.");
+            }
+
+            const messages = await response.json();
+
+            if (messages.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center py-4 text-muted">
+                            No contact messages yet.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tableBody.innerHTML = messages.map(message => `
+                <tr>
+                    <td>${message.id}</td>
+                    <td>
+                        <strong>${escapeHtml(message.name)}</strong>
+                    </td>
+                    <td>
+                        ${escapeHtml(message.email)}<br>
+                        <small class="text-muted">${escapeHtml(message.phone || "-")}</small>
+                    </td>
+                    <td>${escapeHtml(message.subject)}</td>
+                    <td style="min-width: 220px;">${escapeHtml(message.message)}</td>
+                    <td>${new Date(message.createdAt).toLocaleString()}</td>
+                </tr>
+            `).join("");
+
+        } catch (error) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" class="text-center py-4 text-danger">
+                        Unable to load messages.
+                    </td>
+                </tr>
+            `;
+
+            messageAlert.innerHTML = `
+                <div class="alert alert-danger">
+                    ${error.message}
+                </div>
+            `;
+        }
+    }
+
+    loadMessages();
+</script>
+
+</body>
+</html>

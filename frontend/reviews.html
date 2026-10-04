@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SAMANA | Reviews</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .review-container {
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .review-card {
+            border: none;
+            border-radius: 12px;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .star-rating button {
+            border: none;
+            background: transparent;
+            font-size: 32px;
+            color: #ccc;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .star-rating button.active {
+            color: #ffc107;
+        }
+
+        .review-item {
+            border-left: 4px solid #198754;
+        }
+
+        .rating-display {
+            color: #ffc107;
+            font-size: 20px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- NAVBAR -->
+<!-- ========================= -->
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+
+        <a class="navbar-brand text-success fs-3" href="index.html">
+            SAMANA
+        </a>
+
+        <div class="ms-auto d-flex align-items-center gap-3">
+
+            <a href="index.html" class="nav-link">
+                Home
+            </a>
+
+            <a href="experience.html" class="nav-link">
+                Experiences
+            </a>
+
+            <a href="bookings.html" class="nav-link">
+                My Bookings
+            </a>
+
+            <a href="reviews.html" class="nav-link fw-bold">
+                Reviews
+            </a>
+
+            <button
+                type="button"
+                class="btn btn-success"
+                onclick="logoutUser()"
+            >
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- ========================= -->
+<!-- MAIN CONTENT -->
+<!-- ========================= -->
+
+<div class="container review-container">
+
+    <!-- Page Heading -->
+
+    <div class="text-center mb-4">
+        <h1 class="fw-bold">
+            <i class="fa-solid fa-star text-warning"></i>
+            Reviews
+        </h1>
+
+        <p class="text-muted">
+            Share your experience with SAMANA
+        </p>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- MESSAGE -->
+    <!-- ========================= -->
+
+    <div id="reviewMessage"></div>
+
+
+    <!-- ========================= -->
+    <!-- CREATE REVIEW -->
+    <!-- ========================= -->
+
+    <div class="card shadow-sm review-card mb-5">
+
+        <div class="card-body p-4">
+
+            <h3 class="mb-4">
+                <i class="fa-solid fa-pen-to-square text-success"></i>
+                Write a Review
+            </h3>
+
+
+            <form id="reviewForm">
+
+                <!-- Experience -->
+
+                <div class="mb-3">
+
+                    <label for="experienceId" class="form-label fw-bold">
+                        Experience
+                    </label>
+
+                    <select
+                        id="experienceId"
+                        class="form-select"
+                        required
+                    >
+                        <option value="">
+                            Loading experiences...
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <!-- Rating -->
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-bold">
+                        Rating
+                    </label>
+
+                    <div class="star-rating">
+
+                        <button
+                            type="button"
+                            class="star"
+                            data-rating="1"
+                            onclick="selectRating(1)"
+                        >
+                            ★
+                        </button>
+
+                        <button
+                            type="button"
+                            class="star"
+                            data-rating="2"
+                            onclick="selectRating(2)"
+                        >
+                            ★
+                        </button>
+
+                        <button
+                            type="button"
+                            class="star"
+                            data-rating="3"
+                            onclick="selectRating(3)"
+                        >
+                            ★
+                        </button>
+
+                        <button
+                            type="button"
+                            class="star"
+                            data-rating="4"
+                            onclick="selectRating(4)"
+                        >
+                            ★
+                        </button>
+
+                        <button
+                            type="button"
+                            class="star"
+                            data-rating="5"
+                            onclick="selectRating(5)"
+                        >
+                            ★
+                        </button>
+
+                    </div>
+
+                    <input
+                        type="hidden"
+                        id="rating"
+                        value=""
+                    >
+
+                    <small
+                        id="ratingText"
+                        class="text-muted"
+                    >
+                        Please select a rating
+                    </small>
+
+                </div>
+
+
+                <!-- Comment -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="comment"
+                        class="form-label fw-bold"
+                    >
+                        Comment
+                    </label>
+
+                    <textarea
+                        id="comment"
+                        class="form-control"
+                        rows="5"
+                        maxlength="1000"
+                        placeholder="Write your experience here..."
+                    ></textarea>
+
+                    <div class="text-end">
+                        <small class="text-muted">
+                            Maximum 1000 characters
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                    id="submitReviewButton"
+                >
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Submit Review
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- MY REVIEWS -->
+    <!-- ========================= -->
+
+    <div class="card shadow-sm review-card">
+
+        <div class="card-body p-4">
+
+            <h3 class="mb-4">
+                <i class="fa-solid fa-comments text-success"></i>
+                My Reviews
+            </h3>
+
+            <div id="myReviewsContainer">
+
+                <p class="text-muted">
+                    Loading your reviews...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+
+    <p class="mb-0">
+        © 2026 SAMANA. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- ========================= -->
+<!-- YOUR MAIN JAVASCRIPT -->
+<!-- ========================= -->
+
+<script src="js/script.js"></script>
+
+
+<script>
+
+    // ==========================================
+    // CURRENT RATING
+    // ==========================================
+
+    let selectedRating = 0;
+
+
+    // ==========================================
+    // CHECK LOGIN
+    // ==========================================
+
+    function checkLogin() {
+
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+
+            document.getElementById("reviewMessage").innerHTML = `
+                <div class="alert alert-warning">
+                    Please login first to write a review.
+                </div>
+            `;
+
+            document.getElementById("reviewForm").style.display = "none";
+
+            return false;
+        }
+
+        return true;
+    }
+
+
+    // ==========================================
+    // LOAD EXPERIENCES
+    // ==========================================
+
+    async function loadExperiencesForReview() {
+
+        const experienceSelect =
+            document.getElementById("experienceId");
+
+        try {
+
+            const experiences =
+                await apiRequest("/experiences");
+
+            experienceSelect.innerHTML =
+                `<option value="">Select an experience</option>`;
+
+
+            if (!experiences || experiences.length === 0) {
+
+                experienceSelect.innerHTML =
+                    `<option value="">
+                        No experiences available
+                    </option>`;
+
+                return;
+            }
+
+
+            experiences.forEach(function (experience) {
+
+                const option =
+                    document.createElement("option");
+
+                option.value = experience.id;
+
+                option.textContent =
+                    experience.title ||
+                    experience.name ||
+                    `Experience #${experience.id}`;
+
+                experienceSelect.appendChild(option);
+
+            });
+
+
+            // If an experience was selected
+            // on the Experiences page
+
+            const selectedExperienceId =
+                localStorage.getItem(
+                    "selectedExperienceId"
+                );
+
+
+            if (selectedExperienceId) {
+
+                const matchingOption =
+                    experienceSelect.querySelector(
+                        `option[value="${selectedExperienceId}"]`
+                    );
+
+                if (matchingOption) {
+
+                    experienceSelect.value =
+                        selectedExperienceId;
+
+                }
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Failed to load experiences:",
+                error
+            );
+
+            experienceSelect.innerHTML =
+                `<option value="">
+                    Unable to load experiences
+                </option>`;
+        }
+    }
+
+
+    // ==========================================
+    // SELECT RATING
+    // ==========================================
+
+    function selectRating(rating) {
+
+        selectedRating = rating;
+
+        document.getElementById("rating").value =
+            rating;
+
+
+        const stars =
+            document.querySelectorAll(".star");
+
+
+        stars.forEach(function (star) {
+
+            const starRating =
+                Number(star.dataset.rating);
+
+
+            if (starRating <= rating) {
+
+                star.classList.add("active");
+
+            } else {
+
+                star.classList.remove("active");
+
+            }
+
+        });
+
+
+        document.getElementById("ratingText").textContent =
+            `${rating} out of 5 stars`;
+
+    }
+
+
+    // ==========================================
+    // SUBMIT REVIEW
+    // ==========================================
+
+    document
+        .getElementById("reviewForm")
+        .addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+
+            const experienceId =
+                document.getElementById(
+                    "experienceId"
+                ).value;
+
+
+            const comment =
+                document.getElementById(
+                    "comment"
+                ).value.trim();
+
+
+            const message =
+                document.getElementById(
+                    "reviewMessage"
+                );
+
+
+            const submitButton =
+                document.getElementById(
+                    "submitReviewButton"
+                );
+
+
+            // Validate experience
+
+            if (!experienceId) {
+
+                message.innerHTML = `
+                    <div class="alert alert-warning">
+                        Please select an experience.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            // Validate rating
+
+            if (
+                selectedRating < 1 ||
+                selectedRating > 5
+            ) {
+
+                message.innerHTML = `
+                    <div class="alert alert-warning">
+                        Please select a rating from 1 to 5.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            // Disable button
+
+            submitButton.disabled = true;
+
+            submitButton.innerHTML = `
+                <span class="spinner-border spinner-border-sm"></span>
+                Submitting...
+            `;
+
+
+            try {
+
+                const reviewData = {
+
+                    experienceId:
+                        Number(experienceId),
+
+                    rating:
+                        selectedRating,
+
+                    comment:
+                        comment
+
+                };
+
+
+                console.log(
+                    "Submitting review:",
+                    reviewData
+                );
+
+
+                const response =
+                    await apiRequest(
+                        "/reviews",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    reviewData
+                                )
+                        }
+                    );
+
+
+                console.log(
+                    "Review created:",
+                    response
+                );
+
+
+                message.innerHTML = `
+                    <div class="alert alert-success">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Review submitted successfully!
+                    </div>
+                `;
+
+
+                // Clear form
+
+                document
+                    .getElementById("comment")
+                    .value = "";
+
+
+                selectedRating = 0;
+
+                document
+                    .getElementById("rating")
+                    .value = "";
+
+
+                document
+                    .querySelectorAll(".star")
+                    .forEach(function (star) {
+
+                        star.classList.remove("active");
+
+                    });
+
+
+                document.getElementById(
+                    "ratingText"
+                ).textContent =
+                    "Please select a rating";
+
+
+                // Reload reviews
+
+                loadMyReviews();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Review submission error:",
+                    error
+                );
+
+
+                message.innerHTML = `
+                    <div class="alert alert-danger">
+                        Unable to submit review.
+                        Please try again.
+                    </div>
+                `;
+
+            } finally {
+
+                submitButton.disabled = false;
+
+                submitButton.innerHTML = `
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Submit Review
+                `;
+
+            }
+
+        });
+
+
+    // ==========================================
+    // LOAD MY REVIEWS
+    // ==========================================
+
+    async function loadMyReviews() {
+
+        const container =
+            document.getElementById(
+                "myReviewsContainer"
+            );
+
+
+        try {
+
+            const reviews =
+                await apiRequest("/reviews/my");
+
+
+            console.log(
+                "My reviews:",
+                reviews
+            );
+
+
+            if (
+                !reviews ||
+                reviews.length === 0
+            ) {
+
+                container.innerHTML = `
+                    <div class="alert alert-info">
+                        You have not written any reviews yet.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML = "";
+
+
+            reviews.forEach(function (review) {
+
+                const experienceName =
+                    review.experienceTitle ||
+                    review.experienceName ||
+                    `Experience #${review.experienceId || ""}`;
+
+
+                const rating =
+                    Number(review.rating || 0);
+
+
+                let stars = "";
+
+                for (
+                    let i = 1;
+                    i <= 5;
+                    i++
+                ) {
+
+                    if (i <= rating) {
+
+                        stars += "★";
+
+                    } else {
+
+                        stars += "☆";
+
+                    }
+
+                }
+
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "card review-item shadow-sm mb-3";
+
+
+                card.innerHTML = `
+
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between align-items-start">
+
+                            <div>
+
+                                <h5 class="card-title mb-1">
+                                    ${experienceName}
+                                </h5>
+
+                                <div class="rating-display">
+                                    ${stars}
+                                </div>
+
+                            </div>
+
+                            <span class="badge bg-secondary">
+                                Review #${review.id || ""}
+                            </span>
+
+                        </div>
+
+
+                        <p class="card-text mt-3">
+                            ${review.comment || "No comment provided."}
+                        </p>
+
+
+                        ${
+                            review.createdAt
+                            ?
+                            `<small class="text-muted">
+                                ${review.createdAt}
+                            </small>`
+                            :
+                            ""
+                        }
+
+
+                        <div class="mt-3">
+
+                            <button
+                                type="button"
+                                class="btn btn-outline-danger btn-sm"
+                                onclick="deleteReview(${review.id})"
+                            >
+                                <i class="fa-solid fa-trash"></i>
+                                Delete Review
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Failed to load reviews:",
+                error
+            );
+
+
+            container.innerHTML = `
+                <div class="alert alert-danger">
+                    Unable to load your reviews.
+                </div>
+            `;
+
+        }
+
+    }
+
+
+    // ==========================================
+    // DELETE REVIEW
+    // ==========================================
+
+    async function deleteReview(reviewId) {
+
+        if (
+            !confirm(
+                "Are you sure you want to delete this review?"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const response =
+                await apiRequest(
+                    `/reviews/${reviewId}`,
+                    {
+                        method: "DELETE"
+                    }
+                );
+
+
+            console.log(
+                "Delete review response:",
+                response
+            );
+
+
+            document.getElementById(
+                "reviewMessage"
+            ).innerHTML = `
+                <div class="alert alert-success">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Review deleted successfully.
+                </div>
+            `;
+
+
+            loadMyReviews();
+
+
+        } catch (error) {
+
+            console.error(
+                "Delete review error:",
+                error
+            );
+
+
+            document.getElementById(
+                "reviewMessage"
+            ).innerHTML = `
+                <div class="alert alert-danger">
+                    Unable to delete review.
+                </div>
+            `;
+
+        }
+
+    }
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    function logoutUser() {
+
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userEmail");
+        localStorage.removeItem("userRole");
+        localStorage.removeItem("selectedExperienceId");
+
+        window.location.href =
+            "login.html";
+    }
+
+
+    // ==========================================
+    // PAGE LOAD
+    // ==========================================
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            if (!checkLogin()) {
+                return;
+            }
+
+
+            loadExperiencesForReview();
+
+            loadMyReviews();
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
