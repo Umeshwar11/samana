@@ -386,7 +386,7 @@ async function becomeHost() {
 
     if (!token) {
 
-        alert(
+        toast.error(
             "Please login before becoming a host."
         );
 
@@ -519,7 +519,7 @@ async function becomeHost() {
         );
 
 
-        alert(
+        toast.error(
             error.message ||
             "Something went wrong."
         );
@@ -561,7 +561,7 @@ function createHostProfile() {
 
     if (!token) {
 
-        alert(
+        toast.error(
             "Please login before creating your host profile."
         );
 
@@ -581,7 +581,7 @@ function createHostProfile() {
         role.toUpperCase() !== "HOST"
     ) {
 
-        alert(
+        toast.error(
             "Please become a host first."
         );
 
@@ -606,7 +606,7 @@ function viewMyHostProfile() {
 
     if (!token) {
 
-        alert(
+        toast.error(
             "Please login first."
         );
 
@@ -634,7 +634,7 @@ function createExperience() {
 
     if (!token) {
 
-        alert(
+        toast.error(
             "Please login first."
         );
 
@@ -654,7 +654,7 @@ function createExperience() {
         role.toUpperCase() !== "HOST"
     ) {
 
-        alert(
+        toast.error(
             "Only hosts can create experiences."
         );
 

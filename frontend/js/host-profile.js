@@ -120,7 +120,7 @@ async function loadHostProfile() {
 
     if (!token) {
 
-        alert("Please login first.");
+        toast.error("Please login first.");
 
         window.location.href = "login.html";
 
@@ -154,7 +154,7 @@ async function loadHostProfile() {
             response.status === 403
         ) {
 
-            alert(
+            toast.error(
                 "Your session has expired. Please login again."
             );
 
@@ -1314,7 +1314,7 @@ function validateHostProfileForm() {
 
     if (!location) {
 
-        alert(
+        toast.error(
             "Please enter your location."
         );
 
@@ -1324,7 +1324,7 @@ function validateHostProfileForm() {
 
     if (!education) {
 
-        alert(
+        toast.error(
             "Please enter your education."
         );
 
@@ -1334,7 +1334,7 @@ function validateHostProfileForm() {
 
     if (!profession) {
 
-        alert(
+        toast.error(
             "Please enter your profession."
         );
 
@@ -1344,7 +1344,7 @@ function validateHostProfileForm() {
 
     if (!aboutHost) {
 
-        alert(
+        toast.error(
             "Please tell travelers about yourself."
         );
 
@@ -1354,7 +1354,7 @@ function validateHostProfileForm() {
 
     if (!familyDescription) {
 
-        alert(
+        toast.error(
             "Please add your family description."
         );
 
@@ -1364,7 +1364,7 @@ function validateHostProfileForm() {
 
     if (yearsOfHosting < 0) {
 
-        alert(
+        toast.error(
             "Years of hosting cannot be negative."
         );
 
@@ -1390,7 +1390,7 @@ async function saveHostProfile(event) {
 
     if (!token) {
 
-        alert(
+        toast.error(
             "Please login first."
         );
 
@@ -1611,7 +1611,7 @@ async function saveHostProfile(event) {
         // SUCCESS
         // =========================================
 
-        alert(
+        toast.error(
             "Host profile saved successfully!"
         );
 
@@ -1648,7 +1648,7 @@ async function saveHostProfile(event) {
         );
 
 
-        alert(
+        toast.error(
             error.message ||
             "Unable to save host profile."
         );
@@ -1716,7 +1716,7 @@ function setupImagePreview(
 
             if (!file.type.startsWith("image/")) {
 
-                alert(
+                toast.error(
                     "Please select an image file."
                 );
 
@@ -1768,7 +1768,7 @@ async function uploadHostMedia(event) {
 
     if (!token) {
 
-        alert(
+        toast.error(
             "Please login first."
         );
 
@@ -1819,7 +1819,7 @@ async function uploadHostMedia(event) {
         !housePhoto
     ) {
 
-        alert(
+        toast.error(
             "Please select at least one photo to upload."
         );
 
@@ -1889,7 +1889,7 @@ async function uploadHostMedia(event) {
         }
 
 
-        alert(
+        toast.error(
             "Host photos uploaded successfully!"
         );
 
@@ -1934,7 +1934,7 @@ async function uploadHostMedia(event) {
         );
 
 
-        alert(
+        toast.error(
             error.message ||
             "Unable to upload photos."
         );
@@ -1965,7 +1965,7 @@ async function createExperience() {
 
     if (!token) {
 
-        alert(
+        toast.error(
             "Please login first."
         );
 
@@ -1991,7 +1991,7 @@ async function createExperience() {
         role.toUpperCase() !== "HOST"
     ) {
 
-        alert(
+        toast.error(
             "You need to become a host first."
         );
 
@@ -2031,7 +2031,7 @@ async function createExperience() {
             response.status === 403
         ) {
 
-            alert(
+            toast.error(
                 "Your session has expired. Please login again."
             );
 
@@ -2052,7 +2052,7 @@ async function createExperience() {
 
         if (!response.ok) {
 
-            alert(
+            toast.error(
                 "Please complete your host profile before creating an experience."
             );
 
@@ -2069,7 +2069,7 @@ async function createExperience() {
             !profile.id
         ) {
 
-            alert(
+            toast.error(
                 "Please complete your host profile before creating an experience."
             );
 
@@ -2093,7 +2093,7 @@ async function createExperience() {
         );
 
 
-        alert(
+        toast.error(
             "Please complete your host profile before creating an experience."
         );
     }

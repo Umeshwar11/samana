@@ -364,7 +364,7 @@ if (loginForm) {
                     );
 
 
-                alert(
+                toast.success(
                     "Login successful! Welcome " +
                     data.name
                 );
@@ -382,7 +382,7 @@ if (loginForm) {
                 );
 
 
-                alert(
+                toast.error(
                     error.message ||
                     "Login failed. Please try again."
                 );
@@ -521,7 +521,7 @@ async function cancelBooking(bookingId) {
         );
 
 
-        alert(
+        toast.success(
             "Booking cancelled successfully!"
         );
 
@@ -544,7 +544,7 @@ async function cancelBooking(bookingId) {
         );
 
 
-        alert(
+        toast.error(
             error.message ||
             "Failed to cancel booking."
         );
@@ -618,7 +618,7 @@ if (registerForm) {
                 confirmPassword
             ) {
 
-                alert(
+                toast.error(
                     "Passwords do not match."
                 );
 
@@ -632,7 +632,7 @@ if (registerForm) {
                 !terms.checked
             ) {
 
-                alert(
+                toast.error(
                     "Please agree to the Terms & Conditions."
                 );
 
@@ -687,7 +687,7 @@ if (registerForm) {
                 }
 
 
-                alert(
+                toast.success(
                     "Registration successful! Please login."
                 );
 
@@ -710,7 +710,7 @@ if (registerForm) {
                 );
 
 
-                alert(
+                toast.error(
                     error.message ||
                     "Registration failed. Please try again."
                 );
