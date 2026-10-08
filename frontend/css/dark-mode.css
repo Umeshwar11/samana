@@ -1,0 +1,329 @@
+/* =========================================================
+   DARK MODE SUPPORT
+   Automatic dark theme based on system preference
+   Non-breaking: only applies when user prefers dark mode
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Dark mode overrides */
+        --light-bg: #1c1917;
+        --white: #292524;
+        --dark: #f5f5f4;
+        --text: #a8a29d;
+        --muted: #78716b;
+        --border: #44403c;
+
+        /* Premium dark colors */
+        --neutral-bg: #1c1917;
+        --neutral-surface: #292524;
+        --neutral-text: #f5f5f4;
+        --neutral-text-secondary: #a8a29d;
+        --neutral-border: #44403c;
+    }
+
+    body {
+        background: var(--light-bg);
+        color: var(--text);
+    }
+
+    /* CARDS IN DARK MODE */
+    .card,
+    .modal-content,
+    .dropdown-menu {
+        background: var(--white);
+        color: var(--dark);
+        border-color: var(--border);
+    }
+
+    /* NAVBAR IN DARK MODE */
+    .navbar {
+        background: rgba(28, 25, 23, 0.95) !important;
+        border-bottom-color: var(--border);
+    }
+
+    .nav-link {
+        color: var(--dark) !important;
+    }
+
+    .nav-link:hover {
+        color: var(--primary) !important;
+    }
+
+    .navbar-brand {
+        color: var(--primary) !important;
+    }
+
+    /* FORMS IN DARK MODE */
+    .form-control,
+    .form-select,
+    textarea {
+        background: #3f3f3f;
+        color: var(--dark);
+        border-color: var(--border);
+    }
+
+    .form-control::placeholder {
+        color: var(--muted);
+    }
+
+    .form-control:focus,
+    .form-select:focus,
+    textarea:focus {
+        background: #4a4a4a;
+        color: var(--dark);
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(26, 124, 74, 0.2);
+    }
+
+    .input-group-text {
+        background: #3f3f3f;
+        border-color: var(--border);
+        color: var(--text);
+    }
+
+    .form-label {
+        color: var(--dark);
+    }
+
+    /* TEXT IN DARK MODE */
+    p, span, label, li {
+        color: var(--dark);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--dark);
+    }
+
+    /* LINKS IN DARK MODE */
+    a {
+        color: var(--primary-light);
+    }
+
+    a:hover {
+        color: #fff;
+    }
+
+    /* BUTTONS IN DARK MODE */
+    .btn-secondary {
+        background: transparent;
+        color: var(--primary-light);
+        border-color: var(--primary-light);
+    }
+
+    .btn-secondary:hover {
+        background: rgba(26, 124, 74, 0.2);
+        color: #fff;
+    }
+
+    /* TABLE IN DARK MODE */
+    table {
+        color: var(--dark);
+    }
+
+    thead {
+        background: #3f3f3f;
+        color: var(--dark);
+    }
+
+    tbody tr {
+        border-color: var(--border);
+    }
+
+    tbody tr:hover {
+        background: rgba(26, 124, 74, 0.1);
+    }
+
+    /* CODE IN DARK MODE */
+    code {
+        background: #3f3f3f;
+        color: #a0d995;
+    }
+
+    pre {
+        background: #1a1a1a;
+        color: #fff;
+        border: 1px solid var(--border);
+    }
+
+    /* ALERTS IN DARK MODE */
+    .alert {
+        background: rgba(0, 0, 0, 0.2);
+        border-color: var(--border);
+        color: var(--dark);
+    }
+
+    .alert-success {
+        background: rgba(22, 163, 74, 0.15);
+        border-color: var(--success);
+    }
+
+    .alert-danger {
+        background: rgba(220, 38, 38, 0.15);
+        border-color: var(--error);
+    }
+
+    .alert-warning {
+        background: rgba(234, 140, 85, 0.15);
+        border-color: var(--warning);
+    }
+
+    .alert-info {
+        background: rgba(2, 132, 199, 0.15);
+        border-color: var(--info);
+    }
+
+    /* BLOCKQUOTE IN DARK MODE */
+    blockquote {
+        color: var(--text);
+        border-color: var(--primary);
+    }
+
+    /* HORIZONTAL RULE IN DARK MODE */
+    hr {
+        border-color: var(--border);
+    }
+
+    /* FORM VALIDATION IN DARK MODE */
+    .form-control.is-valid {
+        border-color: var(--success);
+        background-color: rgba(22, 163, 74, 0.1);
+    }
+
+    .form-control.is-invalid {
+        border-color: var(--error);
+        background-color: rgba(220, 38, 38, 0.1);
+    }
+
+    .valid-feedback {
+        color: #4ade80;
+    }
+
+    .invalid-feedback {
+        color: #f87171;
+    }
+
+    /* DROPDOWN IN DARK MODE */
+    .dropdown-item {
+        color: var(--dark);
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        background: rgba(26, 124, 74, 0.2);
+        color: var(--primary-light);
+    }
+
+    .dropdown-divider {
+        border-color: var(--border);
+    }
+
+    /* BADGE IN DARK MODE */
+    .badge {
+        background: var(--primary);
+        color: white;
+    }
+
+    .badge.bg-secondary {
+        background: var(--secondary) !important;
+    }
+
+    /* HERO SECTION IN DARK MODE */
+    .hero {
+        background:
+            linear-gradient(135deg, rgba(26, 124, 74, 0.8) 0%, rgba(15, 87, 51, 0.8) 100%),
+            url("../images/rangoli-1-1.webp");
+    }
+
+    /* EXPERIENCE CARD IN DARK MODE */
+    .experience-card {
+        background: var(--white);
+        border-color: var(--border);
+    }
+
+    .experience-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* MODAL IN DARK MODE */
+    .modal-content {
+        background: var(--white);
+        border-color: var(--border);
+    }
+
+    .modal-header {
+        border-bottom-color: var(--border);
+    }
+
+    .modal-footer {
+        border-top-color: var(--border);
+    }
+
+    .close, .btn-close {
+        filter: invert(1);
+    }
+
+    /* PAGINATION IN DARK MODE */
+    .pagination .page-link {
+        background: var(--white);
+        border-color: var(--border);
+        color: var(--dark);
+    }
+
+    .pagination .page-link:hover {
+        background: var(--primary-light);
+        border-color: var(--primary);
+    }
+
+    .pagination .page-item.active .page-link {
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+
+    /* SEARCH BOX IN DARK MODE */
+    .search-box {
+        background: var(--white);
+        border-color: var(--border);
+    }
+
+    .search-box input {
+        background: #4a4a4a;
+        color: var(--dark);
+        border-color: var(--border);
+    }
+
+    .search-box input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(26, 124, 74, 0.15);
+    }
+
+    /* SKELETON IN DARK MODE */
+    .skeleton {
+        background: linear-gradient(
+            90deg,
+            #3f3f3f 25%,
+            #4a4a4a 50%,
+            #3f3f3f 75%
+        );
+    }
+
+    /* FOOTER IN DARK MODE */
+    footer {
+        background: #1a1714;
+        color: var(--text);
+        border-top-color: var(--border);
+    }
+}
+
+/* SMOOTH COLOR TRANSITIONS IN DARK MODE */
+body,
+.card,
+.modal-content,
+.form-control,
+.form-select,
+textarea,
+a,
+button,
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
