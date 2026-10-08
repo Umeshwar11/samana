@@ -91,8 +91,10 @@
                                 id="email"
                                 placeholder="Enter your email"
                                 aria-label="Email address"
-                                aria-describedby="emailHelp"
+                                aria-describedby="emailError"
                                 required>
+
+                            <div id="emailError" class="invalid-feedback"></div>
 
                         </div>
 
@@ -113,6 +115,7 @@
                                     id="password"
                                     placeholder="Enter your password"
                                     aria-label="Password"
+                                    aria-describedby="passwordError"
                                     required>
 
                                 <button
@@ -127,6 +130,8 @@
                                 </button>
 
                             </div>
+
+                            <div id="passwordError" class="invalid-feedback"></div>
 
                         </div>
 
@@ -234,6 +239,8 @@
 <!-- ================= JAVASCRIPT ================= -->
 
 <script src="js/toast.js"></script>
+
+<script src="js/form-validation.js"></script>
 
 <script src="js/script.js"></script>
 
