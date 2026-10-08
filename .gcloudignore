@@ -1,0 +1,14 @@
+# GCP Cloud Run ignores
+.git
+.gitignore
+node_modules
+npm-debug.log
+.env
+.env.local
+.vscode
+*.log
+.DS_Store
+target/
+*.class
+backend/samana\ backend/samana-backend/.mvn/
+backend/samana\ backend/samana-backend/mvnw.cmd

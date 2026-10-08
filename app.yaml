@@ -1,0 +1,16 @@
+runtime: custom
+env: flex
+
+env_variables:
+  SPRING_PROFILES_ACTIVE: "postgres"
+  DB_DRIVER: "org.postgresql.Driver"
+  JAVA_TOOL_OPTIONS: "-Xmx512m -Xms256m"
+  PORT: "8080"
+
+resources:
+  cpu: 1
+  memory_gb: 0.5
+
+handlers:
+  - url: /.*
+    script: auto
