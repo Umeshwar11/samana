@@ -8,7 +8,7 @@
 // =====================================================
 
 const EXPERIENCE_API_URL =
-    "http://localhost:8080/api";
+    "https://samana-backend-82716904797.asia-south1.run.app/api";
 
 
 // =====================================================
@@ -16,7 +16,7 @@ const EXPERIENCE_API_URL =
 // =====================================================
 
 const EXPERIENCE_BACKEND_URL =
-    "http://localhost:8080";
+    "https://samana-backend-82716904797.asia-south1.run.app";
 
 
 // =====================================================

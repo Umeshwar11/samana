@@ -1,4 +1,4 @@
-const HOST_API_URL = "http://localhost:8080/api";
+const HOST_API_URL = "https://samana-backend-82716904797.asia-south1.run.app/api";
 
 
 // =========================================================

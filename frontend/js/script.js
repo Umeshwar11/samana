@@ -26,14 +26,14 @@ document.querySelectorAll(".wishlist").forEach((item) => {
 // SAMANA BACKEND API
 // =========================================================
 
-const API_BASE_URL = "http://localhost:8080/api";
+const API_BASE_URL = "https://samana-backend-82716904797.asia-south1.run.app/api";
 
 
 // =========================================================
 // BACKEND SERVER URL
 // =========================================================
 
-const BACKEND_URL = "http://localhost:8080";
+const BACKEND_URL = "https://samana-backend-82716904797.asia-south1.run.app";
 
 
 // =========================================================

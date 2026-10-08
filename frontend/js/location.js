@@ -1,5 +1,5 @@
 const LOCATION_API_URL =
-    "http://localhost:8080/api/locations";
+    "https://samana-backend-82716904797.asia-south1.run.app/api/locations";
 
 
 // =========================================================
