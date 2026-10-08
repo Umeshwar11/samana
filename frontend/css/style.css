@@ -13,6 +13,9 @@
 @import url('css/dark-mode.css');
 @import url('css/accessibility.css');
 
+/* Import Phase 3: Polish */
+@import url('css/components.css');
+
 :root {
     /* LEGACY VARIABLES (kept for backward compatibility) */
     --samana-green: #2f6b45;
@@ -375,17 +378,17 @@ section > .container-fluid > h2 {
     border-radius: var(--radius-lg);
     overflow: hidden;
 
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
 
     height: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .category-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .category-card img {
@@ -443,9 +446,9 @@ section > .container-fluid > h2 {
     border-radius: var(--radius-lg);
     overflow: hidden;
 
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
 
     height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.04);
@@ -453,7 +456,7 @@ section > .container-fluid > h2 {
 
 .experience-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .experience-image {
@@ -569,9 +572,9 @@ section > .container-fluid > h2 {
 
     text-align: center;
 
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
 
     height: 100%;
 
@@ -580,7 +583,7 @@ section > .container-fluid > h2 {
 
 .feature-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .feature-card i {
@@ -618,9 +621,9 @@ section > .container-fluid > h2 {
 
     border-radius: var(--radius-lg);
 
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
 
     height: 100%;
 
@@ -629,7 +632,7 @@ section > .container-fluid > h2 {
 
 .testimonial-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .stars {
