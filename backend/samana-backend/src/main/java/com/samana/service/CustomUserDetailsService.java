@@ -43,7 +43,13 @@ public class CustomUserDetailsService implements UserDetailsService {
             User user) {
 
         if (user.getRole() == null) {
-            return Collections.emptyList();
+            System.out.println(
+                    "WARNING: User " + user.getEmail() +
+                    " has null role. Defaulting to USER role."
+            );
+            return Collections.singletonList(
+                    new SimpleGrantedAuthority("ROLE_USER")
+            );
         }
 
         return Collections.singletonList(
