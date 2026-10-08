@@ -81,7 +81,7 @@
 
                         <div class="mb-3">
 
-                            <label class="form-label">
+                            <label for="email" class="form-label">
                                 Email Address
                             </label>
 
@@ -90,6 +90,8 @@
                                 class="form-control"
                                 id="email"
                                 placeholder="Enter your email"
+                                aria-label="Email address"
+                                aria-describedby="emailHelp"
                                 required>
 
                         </div>
@@ -99,7 +101,7 @@
 
                         <div class="mb-3">
 
-                            <label class="form-label">
+                            <label for="password" class="form-label">
                                 Password
                             </label>
 
@@ -110,14 +112,17 @@
                                     class="form-control"
                                     id="password"
                                     placeholder="Enter your password"
+                                    aria-label="Password"
                                     required>
 
                                 <button
                                     class="btn btn-outline-secondary"
                                     type="button"
-                                    id="togglePassword">
+                                    id="togglePassword"
+                                    aria-label="Toggle password visibility"
+                                    aria-pressed="false">
 
-                                    <i class="fa-solid fa-eye"></i>
+                                    <i class="fa-solid fa-eye" aria-hidden="true"></i>
 
                                 </button>
 
@@ -134,9 +139,12 @@
 
                                 <input
                                     type="checkbox"
-                                    id="rememberMe">
+                                    id="rememberMe"
+                                    aria-label="Remember me">
 
-                                Remember Me
+                                <label for="rememberMe" style="margin-left: 5px;">
+                                    Remember Me
+                                </label>
 
                             </div>
 
@@ -174,9 +182,10 @@
 
                         <button
                             type="button"
-                            class="btn btn-outline-danger w-100 mb-3">
+                            class="btn btn-outline-danger w-100 mb-3"
+                            aria-label="Continue with Google">
 
-                            <i class="fa-brands fa-google"></i>
+                            <i class="fa-brands fa-google" aria-hidden="true"></i>
 
                             Continue with Google
 
@@ -187,9 +196,10 @@
 
                         <button
                             type="button"
-                            class="btn btn-outline-primary w-100">
+                            class="btn btn-outline-primary w-100"
+                            aria-label="Continue with Facebook">
 
-                            <i class="fa-brands fa-facebook-f"></i>
+                            <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
 
                             Continue with Facebook
 
