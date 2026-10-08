@@ -1,0 +1,159 @@
+/* =========================================================
+   PREMIUM TYPOGRAPHY SYSTEM
+   Non-breaking addition to existing styles
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Font Families */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-accent: 'Poppins', sans-serif;
+
+    /* Font Sizes */
+    --text-xs: 0.75rem;      /* 12px */
+    --text-sm: 0.875rem;     /* 14px */
+    --text-base: 1rem;       /* 16px */
+    --text-lg: 1.125rem;     /* 18px */
+    --text-xl: 1.25rem;      /* 20px */
+    --text-2xl: 1.5rem;      /* 24px */
+    --text-3xl: 1.875rem;    /* 30px */
+    --text-4xl: 2.25rem;     /* 36px */
+    --text-5xl: 3rem;        /* 48px */
+    --text-6xl: 3.75rem;     /* 60px */
+
+    /* Line Heights */
+    --leading-tight: 1.2;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.75;
+
+    /* Font Weights */
+    --weight-light: 300;
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-extrabold: 800;
+    --weight-black: 900;
+}
+
+/* Global Typography */
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    letter-spacing: 0.3px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-extrabold);
+    letter-spacing: -0.5px;
+    line-height: var(--leading-tight);
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: clamp(32px, 5vw, 56px);
+}
+
+h2 {
+    font-size: clamp(24px, 4vw, 42px);
+}
+
+h3 {
+    font-size: clamp(20px, 3vw, 32px);
+}
+
+h4 {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+}
+
+h5 {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+}
+
+h6 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+p {
+    margin: 0 0 1rem 0;
+    line-height: var(--leading-relaxed);
+}
+
+/* Utility Classes */
+.text-sm {
+    font-size: var(--text-sm);
+    letter-spacing: 0.2px;
+}
+
+.text-lg {
+    font-size: var(--text-lg);
+    letter-spacing: 0.3px;
+}
+
+.text-xl {
+    font-size: var(--text-xl);
+    letter-spacing: 0.4px;
+}
+
+.font-heading {
+    font-family: var(--font-heading);
+    font-weight: var(--weight-extrabold);
+}
+
+.font-body {
+    font-family: var(--font-body);
+}
+
+.font-accent {
+    font-family: var(--font-accent);
+}
+
+/* Font Weights */
+.font-light {
+    font-weight: var(--weight-light);
+}
+
+.font-normal {
+    font-weight: var(--weight-normal);
+}
+
+.font-medium {
+    font-weight: var(--weight-medium);
+}
+
+.font-semibold {
+    font-weight: var(--weight-semibold);
+}
+
+.font-bold {
+    font-weight: var(--weight-bold);
+}
+
+.font-extrabold {
+    font-weight: var(--weight-extrabold);
+}
+
+/* Links */
+a {
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Code */
+code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
