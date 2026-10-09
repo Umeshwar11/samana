@@ -1753,7 +1753,7 @@ async function createBooking() {
             function () {
 
                 window.location.href =
-                    "my-bookings.html";
+                    "bookings.html";
 
             },
             2000
