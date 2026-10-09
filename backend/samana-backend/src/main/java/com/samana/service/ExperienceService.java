@@ -766,7 +766,7 @@ public class ExperienceService {
     // CONVERT ENTITY → RESPONSE
     // =========================================================
 
-    private ExperienceResponse convertToResponse(
+    public ExperienceResponse convertToResponse(
             Experience experience
     ) {
 
