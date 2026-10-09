@@ -2,13 +2,27 @@
 // SAMANA EXPERIENCE DETAILS
 // =====================================================
 
+// =====================================================
+// BACKEND URL CONFIGURATION
+// =====================================================
+
+const getBackendUrl = () => {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:8080';
+    }
+    const currentUrl = window.location.origin;
+    if (currentUrl.includes('samana-frontend')) {
+        return currentUrl.replace('samana-frontend', 'samana-backend');
+    }
+    return 'https://samana-backend-82716904797.asia-south1.run.app';
+};
 
 // =====================================================
 // API BASE URL
 // =====================================================
 
 const EXPERIENCE_API_URL =
-    "https://samana-backend-82716904797.asia-south1.run.app/api";
+    getBackendUrl() + "/api";
 
 
 // =====================================================
@@ -16,7 +30,7 @@ const EXPERIENCE_API_URL =
 // =====================================================
 
 const EXPERIENCE_BACKEND_URL =
-    "https://samana-backend-82716904797.asia-south1.run.app";
+    getBackendUrl();
 
 
 // =====================================================
