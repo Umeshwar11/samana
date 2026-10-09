@@ -83,6 +83,25 @@ public class Experience {
     private List<ExperiencePackage> packages;
 
     // ==========================================
+    // FESTIVAL & CALENDAR (NEW)
+    // ==========================================
+
+    @Column(name = "state")
+    private String state;
+
+    @Column(name = "festival_date")
+    private java.time.LocalDate festivalDate;
+
+    @Column(name = "festival_month")
+    private Integer festivalMonth;
+
+    @Column(name = "is_recurring_annually")
+    private Boolean isRecurringAnnually = false;
+
+    @OneToMany(mappedBy = "experience", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<AvailableDate> availableDates;
+
+    // ==========================================
     // CONSTRUCTOR
     // ==========================================
 
@@ -315,5 +334,52 @@ public class Experience {
 
     public void setPackages(List<ExperiencePackage> packages) {
         this.packages = packages;
+    }
+
+    // ==========================================
+    // FESTIVAL & CALENDAR
+    // ==========================================
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public java.time.LocalDate getFestivalDate() {
+        return festivalDate;
+    }
+
+    public void setFestivalDate(java.time.LocalDate festivalDate) {
+        this.festivalDate = festivalDate;
+        if (festivalDate != null) {
+            this.festivalMonth = festivalDate.getMonthValue();
+        }
+    }
+
+    public Integer getFestivalMonth() {
+        return festivalMonth;
+    }
+
+    public void setFestivalMonth(Integer festivalMonth) {
+        this.festivalMonth = festivalMonth;
+    }
+
+    public Boolean getIsRecurringAnnually() {
+        return isRecurringAnnually;
+    }
+
+    public void setIsRecurringAnnually(Boolean isRecurringAnnually) {
+        this.isRecurringAnnually = isRecurringAnnually;
+    }
+
+    public List<AvailableDate> getAvailableDates() {
+        return availableDates;
+    }
+
+    public void setAvailableDates(List<AvailableDate> availableDates) {
+        this.availableDates = availableDates;
     }
 }
