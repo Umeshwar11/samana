@@ -29,7 +29,8 @@ public interface ExperienceRepository extends JpaRepository<Experience, Long> {
     List<Experience> findByDurationBetween(Integer minDuration, Integer maxDuration);
 
     // Guests filter
-    List<Experience> findByMaxGuestsGreaterThanOrEqual(Integer minGuests);
+    @Query("SELECT e FROM Experience e WHERE e.maxGuests >= :minGuests")
+    List<Experience> findByMaxGuestsGreaterThanOrEqual(@Param("minGuests") Integer minGuests);
 
     // Category filter (list of categories)
     List<Experience> findByCategoryIdIn(List<Long> categoryIds);
