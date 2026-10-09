@@ -1,6 +1,7 @@
 package com.samana.entity;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "experiences")
@@ -73,6 +74,13 @@ public class Experience {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    // ==========================================
+    // PACKAGES (NEW - ONE-TO-MANY RELATIONSHIP)
+    // ==========================================
+
+    @OneToMany(mappedBy = "experience", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ExperiencePackage> packages;
 
     // ==========================================
     // CONSTRUCTOR
@@ -295,5 +303,17 @@ public class Experience {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    // ==========================================
+    // PACKAGES
+    // ==========================================
+
+    public List<ExperiencePackage> getPackages() {
+        return packages;
+    }
+
+    public void setPackages(List<ExperiencePackage> packages) {
+        this.packages = packages;
     }
 }

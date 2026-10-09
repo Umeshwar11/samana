@@ -34,6 +34,15 @@ public class Booking {
 
 
     // =========================
+    // PACKAGE (NEW)
+    // =========================
+
+    @ManyToOne
+    @JoinColumn(name = "package_id", nullable = true)
+    private ExperiencePackage experiencePackage;
+
+
+    // =========================
     // BOOKING DETAILS
     // =========================
 
@@ -102,6 +111,14 @@ public class Booking {
 
     public void setExperience(Experience experience) {
         this.experience = experience;
+    }
+
+    public ExperiencePackage getExperiencePackage() {
+        return experiencePackage;
+    }
+
+    public void setExperiencePackage(ExperiencePackage experiencePackage) {
+        this.experiencePackage = experiencePackage;
     }
 
 
