@@ -12,6 +12,6 @@ COPY --from=builder /app/target/samana-backend-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 
 ENV PORT=8080
-ENV SPRING_PROFILES_ACTIVE=cloud
+ENV SPRING_PROFILES_ACTIVE=neon
 
 CMD ["java", "-jar", "app.jar"]
