@@ -75,7 +75,7 @@ gcloud run deploy $BACKEND_SERVICE_NAME \
   --max-instances=100 \
   --port=8080 \
   --allow-unauthenticated \
-  --set-env-vars="SPRING_PROFILES_ACTIVE=cloud,DATABASE_URL=${NEON_DATABASE_URL}" \
+  --set-env-vars="SPRING_PROFILES_ACTIVE=neon,NEON_DATABASE_URL=${NEON_DATABASE_URL}" \
   --set-secrets="JWT_SECRET=jwt-secret:latest"
 
 # Step 6: Deploy Frontend to Cloud Run
