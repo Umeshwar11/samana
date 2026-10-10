@@ -8,7 +8,6 @@
 // =========================================================
 
 const EXPLORE_BACKEND_URL = getBackendUrl();
-const API_BASE_URL = EXPLORE_BACKEND_URL + '/api';
 
 
 // =========================================================
