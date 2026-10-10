@@ -40,7 +40,7 @@ if ! docker info > /dev/null 2>&1; then
 fi
 
 echo "  Building backend image..."
-docker build --platform linux/amd64 -t gcr.io/$GCP_PROJECT_ID/$BACKEND_IMAGE_NAME:$IMAGE_TAG backend/
+docker build --platform linux/amd64 -t gcr.io/$GCP_PROJECT_ID/$BACKEND_IMAGE_NAME:$IMAGE_TAG backend/samana-backend/
 docker push gcr.io/$GCP_PROJECT_ID/$BACKEND_IMAGE_NAME:$IMAGE_TAG
 
 echo "  Building frontend image..."
